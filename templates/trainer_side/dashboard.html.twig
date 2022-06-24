@@ -1,0 +1,82 @@
+{% extends "layouts/portallayouttrainer.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+	<style>
+	.hide-me{
+		display:none;
+	}
+	{# .footer {
+			position: relative;
+		} #}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}{{ parent() }}{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}{{ parent() }}{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<div
+				class="page-wrapper">
+				<!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div class="page-content">
+						<div class="row">
+							<div class="col-12 col-lg-12">
+								<div class="card radius-15">
+									<div class="card-body">
+										<div class="d-flex align-items-center">
+											<div>
+												<h2 class="mb-0 text-white" id="service-countx">-
+												</h2>
+											</div>
+											<div class="ml-auto text-white font-35">
+												<i class="bx bx-cart-alt"></i>
+											</div>
+										</div>
+										<div class="d-flex align-items-center">
+											<div>
+												<p class="mb-0 text-white">Under construction</p>
+											</div>
+											<div class="ml-auto text-white font-14"><a href="#"><small>View</small></a></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<!--end row-->
+
+						
+
+				</div>
+			</div>
+		</div>
+	</body>
+<!--header-->
+
+
+{% endblock %}
+
+{% block pageScripts %}
+<!--pg scripts-->
+	<script src="{{ asset('resources/portal/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/vectormap/jquery-jvectormap-in-mill.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/vectormap/jquery-jvectormap-us-aea-en.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/vectormap/jquery-jvectormap-uk-mill-en.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/vectormap/jquery-jvectormap-au-mill.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/apexcharts-bundle/js/apexcharts.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/js/index2.js') }}"></script> #}
+	<script src="{{ asset('resources/portal/func/dashboard/dash.js') }}"></script>
+{% endblock %}

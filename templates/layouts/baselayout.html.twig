@@ -1,0 +1,20 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	{% block head %} {% include ('includes/htmlhead.html.twig') %} {% endblock %}
+</head>
+<body>
+{% block topnav %} {% include ('includes/topnav.html.twig') %} {% endblock %}
+
+{% block mainContent %}
+{% endblock %}
+
+    {% block footer %} {% include ('includes/mainfooter.html.twig') %}  {% endblock %}
+
+{% block mainscripts %} {% include ('includes/mainscripts.html.twig') %} {% endblock %}
+
+{% block pageScripts %} {% endblock %}
+</body>
+</html>

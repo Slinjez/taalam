@@ -1,0 +1,86 @@
+{% extends "layouts/baselayout.html.twig" %}
+
+{% block head %}
+
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('resources/skin/assets/vendor/accordion/dist/css/a11yAccordion.min.css') }}"/>
+
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<!-- Start Page Title Area -->
+	<div class="page-title-area">
+		<div class="container">
+			<div class="page-title-content">
+				<h2>Frequently Asked Questions</h2>
+
+				<ul>
+					<li>
+						<a href="/">
+							Home
+						</a>
+					</li>
+
+					<li class="active">
+						Let Kids Play.
+					</li>
+				</ul>
+
+				<img src="{{asset('resources/skin/assets/images/choose-shape.png')}}" alt="Image" class="shape shape-3" data-speed="0.09" data-revert="true">
+			</div>
+		</div>
+
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-1.png')}}" alt="Image" class="shape shape-1" data-speed="0.04" data-revert="true">
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-2.png')}}" alt="Image" class="shape shape-2" data-speed="0.04" data-revert="true">
+	</div>
+	<!-- End Page Title Area -->
+
+	<!-- Start Our Review Area -->
+	<div class="our-review-area pt-100 pb-70">
+		<div class="container">
+			<div class="section-title">
+				<span class="top-title">Frequently Asked Questions</span>
+				<h2>FAQ</h2>
+			</div>
+
+			<div class="col-12 row loading-div hide-me">
+				<div class="col-12 alerts-div">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="removeDataMessages"></div>
+						<div class="ajaxDataloader"></div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+
+			<div class="row justify-content-center">
+
+				<ul id="accordion1" class="a11yAccordion a11yAccordion-light">
+					{% for faq in faqs %}
+						<li class="a11yAccordionItem">
+							<div class="a11yAccordionItemHeader">
+								{{ faq.question }}
+							</div>
+							<div class="a11yAccordionHideArea">
+								{{ faq.answer }}
+							</div>
+						</li>
+					{% endfor %}
+				</ul>
+
+			</div>
+		</div>
+	</div>
+	<!-- End Our Review Area -->
+
+{% endblock %}
+
+{% block pageScripts %}
+
+	{# <script src="{{ asset('resources/skin/js/func/current-activities.js') }}"></script> #}
+
+	{#<script src="{{ asset('resources/skin/assets/vendor/paginga-master/paginga.jquery.min.js') }}"></script>#}<script src="{{ asset('resources/skin/assets/vendor/accordion/dist/js/a11yAccordion.min.js') }}"> </script>
+{% endblock %}

@@ -1,0 +1,640 @@
+{% extends "layouts/baselayout.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+	<style>
+		#desc-body img {
+			width: 770px;
+			min-height: 510px;
+		}
+		h1 {
+			font-size: 64px;
+			color: #12217c;
+			text-transform: uppercase;
+			font-weight: 700;
+		}
+
+
+		h2 {
+			font-size: 54px;
+			color: #12217c;
+			text-transform: uppercase;
+			font-weight: 600;
+		}
+
+		.classes-detail .inner-box .lower-content .schedule-column .inner-column {
+
+			background-color: #171847;
+			box-shadow: 0 0 15px rgb(0 0 0 / 15%);
+		}
+
+		.classes-detail .inner-box .lower-content .schedule-column .inner-column h5 {
+			position: relative;
+			color: #ffffff;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+		.portfolio-detail-section .inner-box .info-list li span {
+			position: relative;
+			color: #030568;
+			font-weight: 600;
+			width: 170px;
+			display: inline-block;
+		}
+
+		.default-form .form-group input[type="text"],
+		.default-form .form-group input[type="tel"],
+		.default-form .form-group input[type="email"],
+		.default-form .form-group select {
+			position: relative;
+			display: block;
+			width: 100%;
+			line-height: 28px;
+			padding: 10px 25px;
+			color: #222222;
+			height: 60px;
+			font-size: 14px;
+			background: none;
+			font-weight: 400;
+			border-radius: 0;
+			border: 1px solid #dddddd;
+			-webkit-transition: all 300ms ease;
+			-ms-transition: all 300ms ease;
+			-o-transition: all 300ms ease;
+			-moz-transition: all 300ms ease;
+			transition: all 300ms ease;
+			font-family: 'Roboto', sans-serif;
+		}
+
+
+		input,
+		button,
+		select,
+		textarea {
+
+			width: 100%;
+			border: 1px solid black;
+			padding: 5px;
+
+		}
+
+
+		/* T-RADIO */
+		.t-radio {
+			display: none;
+		}
+		/* radio label */
+		.t-radio + label {
+			cursor: pointer;
+			display: block;
+			margin: 0 0 10px;
+			min-height: 21px;
+			padding: 3px 10px 0 35px;
+			position: relative;
+			vertical-align: top;
+		}
+		.t-radio.t-radio--inline + label {
+			display: inline-block;
+		}
+		.t-radio.t-radio--reverse + label {
+			text-align: right;
+			padding: 3px 35px 0 10px;
+		}
+
+		/* fake radio */
+		.t-radio + label::before {
+			border-radius: 15px;
+			border: 2px solid rgba(153, 153, 153, 1);
+			box-sizing: border-box;
+			background-color: transparent;
+			content: '';
+			display: block;
+			height: 24px;
+			left: 0;
+			margin: 0 10px 0 0;
+			position: absolute;
+			top: 0;
+			transition: all 0.3s ease-in-out;
+			width: 24px;
+		}
+		.t-radio + label::after {
+			background: transparent;
+			border-radius: 10px;
+			content: '';
+			display: block;
+			height: 16px;
+			left: 4px;
+			margin: 0;
+			position: absolute;
+			top: 4px;
+			transition: all 0.3s ease-in-out;
+			width: 16px;
+		}
+		.t-radio--reverse + label::before {
+			left: auto;
+			margin: 0 0 0 10px;
+			right: 0;
+		}
+		.t-radio--reverse + label::after {
+			left: auto;
+			right: 4px;
+		}
+
+		/* hover radio */
+		.t-radio + label:hover::before,
+		.t-radio:checked + label:hover::before {
+			;
+			/* hover properties */
+		}
+
+		/* active radio */
+		.t-radio + label:active::before,
+		.t-radio:checked:active + label::before {
+			;
+			/* active properties */
+		}
+
+		/* checked radio */
+		.t-radio:checked + label::before {
+			border-color: #030568;
+		}
+		.t-radio:checked + label::after {
+			background: #030568;
+		}
+
+		/* disabled checkbox */
+		.t-radio:disabled + label {
+			cursor: default;
+			color: rgba(153, 153, 153, 0.6);
+		}
+		.t-radio:disabled + label::before {
+			border-color: rgba(153, 153, 153, 0.6);
+		}
+
+		legend {
+			color: #030568;
+			font-size: 2rem;
+		}
+		.shaded-bit {
+			background-color: #f4f4f4;
+			padding: 18px;
+		}
+		.select-inliner {
+			padding: 8px;
+			border-top: 1px solid black;
+			border-bottom: 1px solid black;
+		}
+
+		.form-control-invalid {
+			border: 2px solid red;
+		}
+		.hide-me {
+			display: none;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<!-- Start Page Title Area -->
+	<div class="page-title-area">
+		<div class="container">
+			<div class="page-title-content">
+				<h2>Join Our Team</h2>
+
+				<ul>
+					<li>
+						<a href="/">
+							Home
+						</a>
+					</li>
+
+					<li class="active">
+						Let Kids Play.
+					</li>
+				</ul>
+
+				<img src="{{asset('resources/skin/assets/images/choose-shape.png')}}" alt="Image" class="shape shape-3" data-speed="0.09" data-revert="true">
+			</div>
+		</div>
+
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-1.png')}}" alt="Image" class="shape shape-1" data-speed="0.04" data-revert="true">
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-2.png')}}" alt="Image" class="shape shape-2" data-speed="0.04" data-revert="true">
+	</div>
+	<!-- End Page Title Area -->
+
+	<div class="col-12 row loading-div hide-me">
+		<div class="col-12 alerts-div">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="removeDataMessages"></div>
+				<div class="ajaxDataloader"></div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+	<!-- Start Case Studies Details Area -->
+	<div class="case-studies-details-area gallery-popup ptb-100">
+		<div class="container">
+			<div class="case-studies-details-img spaced-img">
+				<div class="case-studies-title d-flex justify-content-between align-items-center">
+					<div class="title">
+						<span class="top-title">Job Description</span>
+						<h2 class="title-txt hide-me">#</h2>
+					</div>
+					<p id="event-tagline" class="hide-me">#</p>
+				</div>
+
+				<a
+					href="#" class="img">
+					<!--1320x516-->
+					<img id="thumbnail" class="full-width-img" src="/uploads/heros/events/jobsbg.jpg" alt="Image">
+				</a>
+
+				<ul class="admin">
+					<li class="client">
+						<span>Title :</span>
+
+						<span class="flexify title-txt" id="title-jb"></span>
+
+					</li>
+
+					<li class="client">
+						<span>Posted on :</span>
+
+						<span class="flexify" id="post-date"></span>
+
+					</li>
+
+
+					<li class="project">
+						<span>Contract Length:
+						</span>
+
+						<i class="ri-bookmark-line"></i>
+						<span class="flexify" id="contract_length"></span>
+
+					</li>
+
+					<li class="project">
+						<span>Location:
+						</span>
+
+						<i class="ri-bookmark-line"></i>
+						<span class="flexify" id="location"></span>
+
+					</li>
+
+
+				</ul>
+			</div>
+
+			<div class="case-studies-details-content">
+
+				<form method="post" action="#" id="opp-app-form" novalidate="novalidate">
+					<div class="row clearfix">
+
+						<fieldset>
+							<legend>Section 1: Personal Details</legend>
+							<div class="row clearfix">
+								<div class="col-lg-4 col-md-4 col-sm-12 form-group">
+									<label>Title</label>
+									<input type="text" class="form-control m-input" name="title" id="title_iput" placeholder="Mr/Mrs/Ms..." required="">
+								</div>
+								<div class="col-lg-8 col-md-8 col-sm-12 form-group">
+									<label>Full Names</label>
+									<input type="text" class="form-control m-input" name="names" id="names" placeholder="Peris White" required="">
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<label>Address</label>
+									<input type="text" class="form-control m-input" name="address" id="address" placeholder="1000 Nairobi" required="">
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<label>Phone Number</label>
+									<input type="number" class="form-control m-input" name="phone" id="phone" placeholder="+254 712 345 678" required="">
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<label>Email Address</label>
+									<input type="text" class="form-control m-input" name="email" id="email" placeholder="peris@mail.com" required="">
+								</div>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>Section 2: Academic Qualifications</legend>
+							<div class="row clearfix">
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<p>Are you currently undertaking study/training?</p>
+
+									<div class="col-md-12 row">
+										<input class="t-radio t-radio--inline" id="is_studying_y" type="radio" name="is_studying"/>
+										<label for="is_studying_y">Yes</label>&nbsp;&nbsp;&nbsp;
+										<input class="t-radio t-radio--inline" id="is_studying_n" type="radio" name="is_studying"/>
+										<label for="is_studying_n">No</label>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<p>Have you completed study/training?(i.e school/college/university)</p>
+
+									<div class="col-md-12 row">
+										<input class="t-radio t-radio--inline" id="is_complete_study_y" type="radio" name="is_comp_studying"/>
+										<label for="is_complete_study_y">Yes</label>&nbsp;&nbsp;&nbsp;
+										<input class="t-radio t-radio--inline" id="is_complete_study_n" type="radio" name="is_comp_studying"/>
+										<label for="is_complete_study_n">No</label>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group shaded-bit">
+									<div class="col-lg-12">
+										<p>Enter your study institutions</p>
+										<div id="inputFormRow" class="frm-row-div">
+											<div class="input-group mb-3">
+												<div class="col-12 row">
+													<div class="col-4">
+														<input type="text" id="instu_name" name="institution_name[]" class="form-control m-input" placeholder="Institution" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<input type="text" id="instu_prog" name="program[]" class="form-control m-input" placeholder="Program" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<input type="text" id="instu_completion" name="yom_completion[]" class="form-control m-input" placeholder="Year of completion" autocomplete="off">
+
+													</div>
+												</div>
+												<div class="col-12 row">
+													<div class="input-group-append col-12">
+														<button id="removeRow" type="button" class="btn btn-block btn-danger">Remove Institution</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div id="newRow"></div>
+										<button id="addRow" type="button" class="btn btn-info">Add Instutution</button>
+									</div>
+								</div>
+
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group shaded-bit">
+									<div class="col-lg-12">
+										<p>Are you certified to coach any sport? [Include of you can also deliver First Aid]</p>
+										<div id="inputFormRow" class="frm-row-div">
+											<div class="input-group mb-3">
+												<div class="col-12 row">
+													<div class="col-4">
+														<input type="text" id="certification_id" name="certification[]" class="form-control m-input" placeholder="Certification" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<input type="text" id="certification_level" name="certification_level[]" class="form-control m-input" placeholder="Level" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<div class="input-group-append col-12">
+															<button id="removeRow-cert" type="button" class="btn btn-block btn-danger">Remove Certification</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div id="newRowCertifications"></div>
+										<button id="addRowCertification" type="button" class="btn btn-info">Add Certification</button>
+									</div>
+								</div>
+
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>Section 3: Employment History</legend>
+							<div class="row clearfix">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group shaded-bit">
+									<div class="col-lg-12">
+										<p>Employment History</p>
+										<div id="inputFormRow" class="frm-row-div">
+											<div class="input-group mb-3">
+												<div class="col-12 row">
+													<div class="col-4">
+														<input type="text" name="employer_name[]" class="form-control m-input" placeholder="employer" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<textarea id="w3review" name="employment_position[]" rows="4" cols="50">Position and responsibilities</textarea>
+													</div>
+													<div class="col-4">
+														<textarea id="w3review" name="reason_for_leaving_employment[]" rows="4" cols="50">Reasons for leaving</textarea>
+													</div>
+												</div>
+												<div class="col-12 row">
+													<div class="input-group-append col-12">
+														<button id="removeRow-employer" type="button" class="btn btn-block btn-danger removeRow-employer">Remove Employer</button>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div id="newRow-employers"></div>
+										<button id="addRow-employer" type="button" class="btn btn-info">Add Employer</button>
+									</div>
+								</div>
+
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<label>Please list any relevant volunteer experience</label>
+									<textarea id="w3review" name="volunteer-experience" rows="4" cols="50"></textarea>
+								</div>
+
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<legend>Section 4: Sport experience</legend>
+							<div class="row clearfix">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group shaded-bit">
+									<div class="col-lg-12">
+										<p>Enter sport and physycal activities you have coached as well as age group  of children you have coached</p>
+										<div id="inputFormRow" class="frm-row-div inputFormRow">
+											<div class="input-group mb-3">
+												<div class="col-12 row">
+													<div class="col-4">
+														<input type="text" name="activity_coached[]" class="form-control m-input" placeholder="Activity" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<input type="text" name="age_group_coached[]" class="form-control m-input" placeholder="Age Group" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<div class="input-group-append col-12">
+															<button id="removeRow-employer" type="button" class="btn btn-block btn-danger removeRow-employer">Remove Activity</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div id="newRow-activity"></div>
+										<button id="addRow-activity" type="button" class="btn btn-info">Add Activity</button>
+									</div>
+								</div>
+
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<label>Which age group would you prefer to coach and why?</label>
+									<textarea id="w3review" name="prefered-age-group" rows="4" cols="50"></textarea>
+								</div>
+
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<legend>Section 5: Abled-differently</legend>
+							<div class="row clearfix">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<p>Have you worked with children abled differently [Physical/behavioral]?</p>
+
+									<div class="col-md-12 row">
+										<input class="t-radio t-radio--inline" id="is_diff_able_y" type="radio" name="is_diff_able"/>
+										<label for="is_diff_able_y">Yes</label>&nbsp;&nbsp;&nbsp;
+										<input class="t-radio t-radio--inline" id="is_diff_able_n" type="radio" name="is_diff_able"/>
+										<label for="is_diff_able_n">No</label>
+									</div>
+								</div>
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group shaded-bit">
+									<div class="col-lg-12">
+										<p>List the conditions and activities engaged in</p>
+										<div id="inputFormRow" class="frm-row-div inputFormRow">
+											<div class="input-group mb-3">
+												<div class="col-12 row">
+													<div class="col-4">
+														<input type="text" name="condition_coached_diff_able[]" class="form-control m-input" placeholder="Condition" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<input type="text" name="activity_coached_diff_able[]" class="form-control m-input" placeholder="Activity" autocomplete="off">
+													</div>
+													<div class="col-4">
+														<div class="input-group-append col-12">
+															<button id="removeRow-diff-able" type="button" class="btn btn-block btn-danger removeRow-diff-able">Remove Activity</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div id="newRow-diff-able"></div>
+										<button id="addRow-diff-able" type="button" class="btn btn-info">Add Activity</button>
+									</div>
+								</div>
+
+
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>Section 6: Philosophy</legend>
+							<div class="row clearfix">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<label>In no more than 250 words, how would you describe your coaching philosophy?</label>
+									<textarea id="coach_phil" name="coaching-philosophy" rows="4" cols="50"></textarea>
+								</div>
+
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<legend>Section 7: Availability</legend>
+							<div class="row clearfix">
+
+								<p>When would you be available to deliver coaching sessions?</p>
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<div class="select-inliner">
+										<input type="checkbox" id="fulltype" name="availability[]" value="1">
+										<label for="vehicle1" class="checkbox-inline">
+											Full time</label>
+									</div>
+
+									<div class="select-inliner">
+										<input type="checkbox" id="optb" name="availability[]" value="2">
+										<label for="optb" class="checkbox-inline">
+											During school hours 8am-3pm</label>
+									</div>
+									<div class="select-inliner">
+										<input type="checkbox" id="optc" name="availability[]" value="3">
+										<label for="optc" class="checkbox-inline">
+											After school hours 3pm-5pm</label>
+									</div>
+									<div class="select-inliner">
+										<input type="checkbox" id="optd" name="availability[]" value="4">
+										<label for="optd" class="checkbox-inline">
+											Evening 5pm-9pm</label>
+									</div>
+									<div class="select-inliner">
+										<input type="checkbox" id="opte" name="availability[]" value="5">
+										<label for="opte" class="checkbox-inline">
+											Weekends
+										</label>
+									</div>
+								</div>
+
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<legend>Section 8: Declaration</legend>
+							<div class="row clearfix">
+
+								<div class="col-lg-12 col-md-12 col-sm-12 form-group">
+									<div class="select-inliner">
+										<input type="checkbox" id="declaration" name="declaration" value="1">
+										<label for="vehicle1" class="checkbox-inline">
+											I hereby declare to the best of my knowledge that the information provided in the form is correct, true and valid. I understand that inaccurate, misleading, or untrue statements or knowingly withheld information may jeorpardize my emplyment. I understand that this application does not constiute an offer of employment.</label>
+									</div>
+								</div>
+
+							</div>
+						</fieldset>
+
+						<div class="form-group clearfix col-lg-12 col-md-12 col-sm-12">
+							<div class="btn-three-outer">
+								<button class="default-btn" type="submit" name="submit-form">
+									<i class="ri-edit-line"></i>
+									Submit Application
+								</button>
+							</div>
+						</div>
+
+					</div>
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+	<!-- End Case Studies Details Area -->
+
+{% endblock %}
+
+{% block pageScripts %}
+
+	{# <script src="{{ asset('resources/skin/assets/vendor/paginga-master/paginga.jquery.min.js') }}"></script>
+				<script src="{{ asset('resources/skin/js/func/current-activities-vw.js') }}"></script> #}
+
+
+	<script src="{{ asset('resources/skin/assets/vendor/paginga-master/paginga.jquery.min.js') }}"></script>
+
+
+	{# <script src="{{ asset('resources/skin/assets/js/custom.js') }}"></script> #}
+
+	<script src="{{ asset('resources/skin/assets/js/func/opportunities/opportunity-apply.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+		<title>TAALAM CARE</title>
+		<!--favicon-->
+		<link
+		rel="icon" href="{{ asset('resources/portal/images/favicon-32x32.png') }}" type="image/png"/>
+		<!-- loader-->
+		<link href="{{ asset('resources/portal/css/pace.min.css') }}" rel="stylesheet"/>
+		<script src="{{ asset('resources/portal/js/pace.min.js') }}"></script>
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="{{ asset('resources/portal/css/bootstrap.min.css') }}"/>
+		<link
+		rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&amp;family=Roboto&amp;display=swap"/>
+		<!-- Icons CSS -->
+		<link rel="stylesheet" href="{{ asset('resources/portal/css/icons.css') }}"/>
+		<link rel="stylesheet" href="{{ asset('resources/portal/css/register.css') }}"/>
+
+		<link rel="stylesheet" href="{{ asset('resources/portal/plugins/notifications/css/lobibox.min.css') }}"/>
+
+		<link href="{{ asset('resources/portal/plugins/tagify-master/dist/tagify.css') }}" rel="stylesheet">
+
+		<link
+		href="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.css') }}" rel="stylesheet">
+		<!-- App CSS -->
+		<link rel="stylesheet" href="{{ asset('resources/portal/css/app.css') }}"/>
+		<style>
+			body {
+				overflow-x: hidden;
+			}
+			.sw .toolbar > .btn.disabled,
+			.sw .toolbar>.btn:disabled {
+				display: none;
+			}
+			.removeRegMessages{
+				    padding: 8px;
+    				background: #b5c0c3;
+			}
+			.removeRegMessages{
+				visibility: hidden;
+			}
+
+		</style>
+	</head>
+
+	<body
+		class="bg-theme bg-theme2">
+		<!-- wrapper -->
+		<div class="wrapper">
+			<div class="section-authentication-login d-flex align-items-center justify-content-center">
+				<div class="row">
+					<div class="mx-auto col-12 col-lg-10">
+						<div class="card radius-15 auth-card">
+							<div class="row no-gutters">
+								<div class="col-lg-6">
+									<div class="card-body p-md-5">
+
+
+										<div class="text-center login-separater">
+											<span>TRAINER REGISTRATION</span>
+											<hr/></br>
+									</br>
+								</div>
+								<div class="col-md-12">
+									<div class="col-12 alerts-div">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<div class="removeRegMessages"></div>
+											<div class="ajaxRegloader"></div>
+										</div>
+										<div class="col-md-1"></div>
+									</div>
+								</div>
+								<div class="col-md-12">
+								<div id="content">
+								{# <div class="spinner"></div> #}
+									<div id="smartwizard">
+
+										<ul class="nav">
+											<li class="nav-item">
+												<a class="nav-link" href="#step-1">
+													Profile
+													<small>{uno}</small>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#step-2">
+													Skills
+													<small>{dos}</small>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" href="#step-3">
+													Uploads
+													<small>{tres}</small>
+												</a>
+											</li>
+										</ul>
+
+										<form id="trainer-reg-form" action="#">
+											<div class="tab-content">
+												<div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
+
+													<div class="mt-4 form-group">
+														<label>Preferred Name</label>
+														<input id="InputName" name="InputName" type="text" class="form-control" placeholder="Enter your preferred user name"/>
+													</div>
+													<div class="mt-4 form-group">
+														<label>Email Address</label>
+														<input id="InputEmail1" name="InputEmail1" type="email" class="form-control" placeholder="Enter your email address"/>
+													</div>
+													<div class="mt-4 form-group">
+														<label>Mobile Number</label>
+														<input id="mobile-number" name="mobile-number" type="text" class="form-control" placeholder="Enter your primary mobile number"/>
+													</div>
+													<div class="mt-4 form-group">
+														<label>Address</label>
+														<input id="InputAddress" name="InputAddress" type="text" class="form-control" placeholder="Eg. Nakuru, Kenya"/>
+													</div>
+													<div class="mt-4 form-group">
+														<label>Password</label>
+														<div class="input-group">
+															<input id="loginpassword" name="loginpassword" type="password" class="form-control" placeholder="Enter password" aria-label="Client Password" aria-describedby="button-addon2">
+															<div class="input-group-append">
+																<button class="btn btn-light" type="button" id="button-addon2">
+																	<i class='bx bx-show-alt'></i>
+																</button>
+															</div>
+														</div>
+													</div>
+
+												</div>
+												<div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
+
+													<div class="mt-4 form-group">
+														<label>Education qualification</label>
+														<select id="educationqualification" name="educationqualification" class="form-control">
+															<option>Select</option>
+															<option value="Primary Certificate">Primary Certificate</option>
+															<option value="Secondary Certificate">Secondary Certificate</option>
+															<option value="H.E Certificate and Diploma">H.E Certificate and Diploma</option>
+															<option value="Bachelors degree">Bachelors degree</option>
+															<option value="Masters degree">Masters degree</option>
+															<option value="Doctoral degree">Doctoral degree</option>
+														</select>
+													</div>
+													<div class="mt-4 form-group">
+														<label>Competencies</label>
+														<input id="competencies" name="competencies" class="form-control" placeholder="Eg. FITNESS, SWIMMING" value="SWIMMING, FITNESS">
+													</div>
+													<div class="mt-4 form-group">
+														<label>Describe yourself
+															<small>&#60;200 words</small>
+														</label>
+														<textarea class="form-control" rows="8" cols="50" id="client-bio-field" name="client-bio-field"></textarea>
+													</div>
+
+												</div>
+												<div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
+													<div class=" col-md-12 row">
+														<div class="col-md-12">
+															<p><br>Upload files like your ID, Good conduct etc. You can do this after logging in.</p>
+															<div action="" class="dropzone col-md-12" id="my-awesome-dropzone" name="my-awesome-dropzone"></div>
+														</div>
+														
+														<div class="form-group col">
+															<div class="custom-control custom-switch">
+																<input type="checkbox" class="custom-control-input" id="tnc" checked="false">
+																<label class="custom-control-label" for="tnc">I accept the
+																	<a href="#">TnCs</a>
+																</label>
+															</div>
+														</div>
+
+														<div class="mt-4 btn-group w-100">
+															<button id="trainerRegister" type="submit" class="btn btn-light btn-block trainerRegister-btn">Create My Profile</button>
+															<button type="button" class="btn btn-light trainerRegister-btn trainerRegister-btn-ico">
+																<i class="lni lni-arrow-right"></i>
+															</button>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</form>
+
+									</div>
+								</div>
+								</div>
+
+								<!--<hr>-->
+								<div class="text-center"><br><br>
+									<p class="mb-0">Already have an account?
+										<a href="/trainer-auth">Login</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<img src="{{ asset('resources/portal/images/login-images/login-frent-img.jpg') }}" class="card-img login-img h-100" alt="...">
+						</div>
+					</div>
+					<!--end row-->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<!-- end wrapper -->
+<script src="{{ asset('resources/portal/js/jquery.min.js') }}"></script>
+<script src="{{ asset('resources/portal/js/popper.min.js') }}"></script>
+<script src="{{ asset('resources/portal/js/bootstrap.min.js') }}"></script>
+{# <script src="{{ asset('resources/portal/func/auth/auth.js') }}"></script> #}
+<script src="{{ asset('resources/portal/js/wizard.js') }}"></script>
+<script src="{{ asset('resources/portal/plugins/tagify-master/dist/tagify.min.js') }}"></script>
+<script src="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.js') }}"></script>
+
+
+<script src="{{ asset('resources/portal/plugins/notifications/js/lobibox.min.js') }}"></script>
+<script src="{{ asset('resources/portal/plugins/notifications/js/notifications.min.js') }}"></script>
+<script src="{{ asset('resources/portal/plugins/notifications/js/notification-custom-script.js') }}"></script>
+
+<script src="{{ asset('resources/portal/js/trainerreg.js') }}"></script></body></html>

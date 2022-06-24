@@ -1,0 +1,276 @@
+{% extends "layouts/portallayout.html.twig" %}
+
+{% block head %}
+		<link href="{{ asset('resources/portal/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/fontawesome-free-5.15.4-web/css/all.min.css') }}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('resources/portal/plugins/notifications/css/lobibox.min.css') }}"/>
+	<link href="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.css') }}" rel="stylesheet">
+
+
+	<link href="{{ asset('resources/portal/plugins/wysiwyg-editor-bootstrap/dist/css/wysiwyg.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('resources/portal/plugins/wysiwyg-editor-bootstrap/dist/css/highlight.min.css') }}" rel="stylesheet">
+
+	{{ parent() }}
+	<link href="{{ asset('resources/portal/plugins/simple-rich-text-editor/style.css') }}" rel="stylesheet"/>
+	<style>
+		.footer {
+			position: fixed;
+		}
+		#div-trainerlist {
+			display: block;
+			width: 100%;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">{{page_name}}</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/client-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">{{page_description}}</li>
+									</ol>
+								</nav>
+							</div>
+							<div class="ml-auto hide-me">
+								<div class="btn-group">
+									<button type="button" class="btn btn-light">New Child</button>
+									<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+										<a class="dropdown-item" href="javascript:;">Add new child</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end breadcrumb-->
+						<div class="card">
+							<div class="card-body">
+								<div class="card-title">
+									<h4 class="mb-0">{{page_description}}</h4>
+
+
+								</div>
+								<hr/>
+
+								<div class="col-12 row loading-div hide-me">
+									<div class="col-12 alerts-div">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<div class="removeDataMessages"></div>
+											<div class="ajaxDataloader"></div>
+										</div>
+										<div class="col-md-1"></div>
+									</div>
+								</div>
+
+								<div class="user-profile-page results-div">
+									<div class="card radius-15">
+										<div class="card-body">
+
+
+											<div class="mt-3 tab-content">
+												<div class="tab-pane fade show active" id="Biography">
+													<div class="row">
+														<div class="col-lg-12">
+															<div class="mb-0 border shadow-none card radius-15">
+																<div class="card-body">
+																	
+																	<hr>
+																	<h5 class="mb-3">Edit new tile</h5>
+
+																	<div class="col-12">
+																		<div class="col-12 alerts-div">
+																			<div class="col-md-1"></div>
+																			<div class="col-md-10">
+																				<div class="removeBookMessages"></div>
+																				<div class="ajaxBookloader"></div>
+																			</div>
+																			<div class="col-md-1"></div>
+																		</div>
+																	</div>
+
+																	<div class="row">
+																		<div class="col-md-12 ">
+																			<form action="#" id="new-event-form">
+																			<input type="hidden" id="record_id" value="{{event_tile_details.record_id}}">
+																				<div class="row">
+																					<div class="col-md-12">
+																						<div class="single-select">
+																							<label>Image Description</label>
+																							<input class="form-control" type="text" name="blog-title" id="blog-title" value="{{event_tile_details.service_name}}">
+																						</div>
+																					</div>
+																				</div>
+																				<div class="mt-4 form-group">
+																					<label>Description of the tile</label>
+
+																					<textarea id="editor" class="form-control wysiwyg-editor hide-me">
+																						{{event_tile_details.service_description}}
+																					</textarea>
+																				</div>
+																				<div class="row">
+																				<div class="col-md-6 form-group">
+																					<img id="sidebar-preview" src="{{event_tile_details.desc_picture}}" class="preview-icon-2" alt="">
+																				</div>
+																				<div class="col-md-6 form-group">
+																					<p><br>Upload images
+																						<small>Best Fit Aspect R 700X500</small>
+																					</p>
+																					<div action="" class="dropzone col-md-12" id="my-awesome-dropzone" name="my-awesome-dropzone"></div>
+																				</div>
+																				</div>
+																				
+																				<div class="mt-3 btn-group w-100">
+																					<button id="new-event" type="button" class="btn btn-light btn-block new-event-btn-BN">Update</button>
+																					<button type="button" class="btn btn-light new-event-btn-BN new-event-btn-ico">
+																						<i class="lni lni-arrow-right"></i>
+																					</button>
+																				</div>
+																			</form>
+																		</div>
+																	</div>
+																	<hr>
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+
+	<!--modals-->
+	<div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Preview</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-12">
+						<p>
+							<strong>Name</strong>
+						</p>
+						<p id="preview-name"></p>
+						<p>
+							<strong>Age</strong>
+						</p>
+						<p id="age"></p>
+
+						
+						<p>
+							<strong>Created on</strong>
+						</p>
+						<p id="display_date"></p>
+
+						<p>
+							<strong>Allergies</strong>
+						</p>
+						<p id="allergies"></p>
+
+						
+						<p>
+							<strong>Medical Conditions</strong>
+						</p>
+						<p id="medical_conditions"></p>
+						
+						
+						<p>
+							<strong>Special Needs</strong>
+						</p>
+						<p id="special_needs"></p>
+						
+						<p>
+							<strong>Behavioral Conditions</strong>
+						</p>
+						<p id="behavioral_conditions"></p>
+
+						<p>
+							<strong>Special Needs</strong>
+						</p>
+						<div class="col-12" id="special_need_list"></div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					<a id="edit-kid" href="#" id="new-event" class="btn btn-light new-event-btn">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--modals-->
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/plugins/simple-rich-text-editor/script.js') }}"></script> #}
+
+
+	<script src="{{ asset('resources/portal/plugins/select2/js/select2.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/wysiwyg-editor-bootstrap/dist/js/wysiwyg.min.js') }}"></script>
+
+	<script src="{{ asset('resources/portal/plugins/select2/js/select2.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/func/trainers/new-event.js') }}"></script> #}
+	<script src="{{ asset('resources/portal/plugins/notifications/js/lobibox.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notifications.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notification-custom-script.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.js') }}"></script>
+
+
+	<script src="{{ asset('resources/portal/adminfunc/cms/tiles/edit.js') }}"></script>
+
+
+{% endblock %}

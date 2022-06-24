@@ -1,0 +1,296 @@
+{% extends "layouts/portallayout.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+	<style>
+		.footer {
+			position: relative;
+		}
+	</style>
+	<style>
+		.footer {
+			position: relative;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">User Profile</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/client-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">User Profile</li>
+									</ol>
+								</nav>
+							</div>
+							<div class="ml-auto">
+								<div class="btn-group">
+									<button type="button" class="btn btn-light">Settings</button>
+									<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+										<a class="dropdown-item" href="javascript:;">Action</a>
+										<a class="dropdown-item" href="javascript:;">Change Password</a>
+										<a class="dropdown-item" href="javascript:;">Deactivate Account</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end breadcrumb-->
+						<div class="user-profile-page">
+							<div class="card radius-15">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12 col-lg-7 border-right">
+											<div class="d-md-flex align-items-center">
+												<div class="mb-3 mb-md-0">
+													<i class="bx bx-user bx-lg" width="130" height="130"></i>
+													{# <img src="assets/images/avatars/avatar-1.png" class="shadow rounded-circle" width="130" height="130" alt="" /> #}
+												</div>
+												<div class="ml-md-4 flex-grow-1">
+													<div class="mb-1 d-flex align-items-center">
+														<h4 class="mb-0 portal-user-name"></h4>
+														{# <p class="mb-0 ml-auto">$44/hr</p> #}
+													</div>
+													<p class="mb-0">Role: Client
+													</p>
+													<p>
+														<i class='bx bx-buildings'></i>
+														<span class="location-span"></span>
+													</p>
+													{# <button type="button" class="btn btn-light">Connect</button>
+																																						<button type="button" class="ml-2 btn btn-light">Resume</button> #}
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-lg-5">
+											<table class="table mt-3 table-sm table-borderless mt-md-0">
+												<tbody>
+													<tr>
+														<th>Prefered Contact time:</th>
+														<td>Any-time (40hr/wk)
+															<span class="badge badge-light">available</span>
+														</td>
+													</tr>
+													<tr>
+														<th>Age:</th>
+														<td>
+															<span class="client_age"></span>
+														</td>
+													</tr>
+													<tr>
+														<th>Member Since:</th>
+														<td>
+															<span id="member-since"></span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="mb-3 mb-lg-0">
+												<a id="link-twitter" href="javascript:;" target="_blank" class="btn btn-sm btn-link">
+													<i class='bx bxl-twitter'></i>
+												</a>
+												<a id="link-fb" href="javascript:;" target="_blank" class="btn btn-sm btn-link">
+													<i class='bx bxl-facebook'></i>
+												</a>
+												<a id="link-insta" href="javascript:;" target="_blank" class="btn btn-sm btn-link">
+													<i class='bx bxl-instagram'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<!--end row-->
+									<ul class="nav nav-pills">
+										<li class="nav-item">
+											<a class="nav-link active" id="profile-tab" data-toggle="tab" href="#Biography">
+												<span class="p-tab-name">Biography</span>
+												<i class='bx bxs-user-rectangle font-24 d-sm-none'></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" data-toggle="tab" href="#Edit-Profile">
+												<span class="p-tab-name">Edit Profile</span>
+												<i class='bx bx-message-edit font-24 d-sm-none'></i>
+											</a>
+										</li>
+									</ul>
+									<div class="mt-3 tab-content">
+										<div class="tab-pane fade show active" id="Biography">
+											<div class="row">
+												<div class="col-lg-4">
+													<div class="mb-0 border shadow-none card">
+														<div class="card-body">
+															<h5 class="mb-3">Notes</h5>
+														</div>
+														<ul class="list-group list-group-flush">
+															<li class="list-group-item">
+																<p class="mb-0">
+																	<i class='bx bxs-arrow-to-right'></i>
+																	To change your password, click on the settings button
+																</p>
+															</li>
+															<li class="list-group-item">
+																<p class="mb-0">
+																	<i class='bx bxs-arrow-to-right'></i>
+																	Click on edit profile to update your profile
+																</p>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="col-lg-8">
+													<div class="mb-0 border shadow-none card radius-15">
+														<div class="card-body">
+															<h5 class="mb-3">About</h5>
+															<p id="profile-bio"></p>
+															<hr>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="Edit-Profile">
+											<div class="mb-0 border shadow-none card radius-15">
+												<div class="card-body">
+													<div class="col-12">
+														<div class="col-12 alerts-div">
+															<div class="col-md-1"></div>
+															<div class="col-md-10">
+																<div class="removebioMessages"></div>
+																<div class="ajaxbioloader"></div>
+															</div>
+															<div class="col-md-1"></div>
+														</div>
+													</div>
+													<form id="bio-form" action="#">
+														<div class="form-body">
+															<div class="row">
+																<div class="col-12 col-lg-5 border-right">
+																	<div class="form-row">
+																		<div class="form-group col-md-12">
+																			<label>Full Name</label>
+																			<input id="client-full-name" type="text" value="" class="form-control">
+																		</div>
+																	</div>
+																	<div class="form-group">
+																		<label>Phone</label>
+																		<input id="client-phone" type="text" class="form-control">
+																	</div>
+																	<div class="form-group">
+																		<label>Location</label>
+																		<input type="text" id="client-location" class="form-control">
+																	</div>
+																	<div class="form-group">
+																		<label>Nation</label>
+																		<input type="text" id="client-nationality" class="form-control">
+																	</div>
+																	<div class="form-row">
+																		<div class="form-group col-md-12">
+																			<div class="single-select">
+																				<label>Date Of Birth:</label>
+																				<input class="form-control" type="datetime-local" id="dob">
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-12 col-lg-7">
+																	<div class="form-row">
+																		<div class="col-12">
+																			<div class="form-group col-md-12">
+																				<label>Twitter</label>
+																				<input type="text" class="form-control" id="client-twitter" value="">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="form-row">
+																		<div class="col-6">
+																			<div class="form-group col-md-12">
+																				<label>Instagram</label>
+																				<input type="text" class="form-control" id="client-insta">
+																			</div>
+																		</div>
+																		<div class="col-6">
+																			<div class="form-group col-md-12">
+																				<label>Facebook</label>
+																				<input type="text" class="form-control" id="client-fb">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="form-row">
+																		<div class="col-12">
+																			<div class="form-group col-12">
+																				<label>Bio</label>
+																				<textarea class="form-control" rows="8" cols="50" id="client-bio-field"></textarea>
+																			</div>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="mt-3 btn-group w-100">
+															<button id="clientbio" type="submit" class="btn btn-light btn-block clientbio-btn">Update Profile</button>
+															<button type="submit" class="btn btn-light clientbio-btn clientbio-btn-ico">
+																<i class="lni lni-arrow-right"></i>
+															</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+
+	<script src="{{ asset('resources/portal/func/profile/profile.js') }}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,349 @@
+{% extends "layouts/portallayout.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('resources/portal/plugins/notifications/css/lobibox.min.css') }}"/>
+	<style>
+		.footer {
+			position: relative;
+		}
+	</style>
+	<style>
+		.footer {
+			position: relative;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">Kids Management</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/client-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">Kids Management</li>
+									</ol>
+								</nav>
+							</div>
+							<div class="ml-auto hide-me">
+								<div class="btn-group">
+									<button type="button" class="btn btn-light">New Child</button>
+									<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+										<a class="dropdown-item" href="javascript:;">Add new child</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--end breadcrumb-->
+						<div class="user-profile-page">
+							<div class="card radius-15">
+								<div
+									class="card-body">
+
+									<!--end row-->
+									<ul class="nav nav-pills">
+										<li class="nav-item">
+											<a class="nav-link active" id="profile-tab" data-toggle="tab" href="#Biography">
+												<span class="p-tab-name">Details</span>
+												<i class='bx bxs-user-rectangle font-24 d-sm-none'></i>
+											</a>
+										</li>
+										<li class="nav-item hide-me">
+											<a class="nav-link" data-toggle="tab" href="#Edit-Profile">
+												<span class="p-tab-name">Edit Profile</span>
+												<i class='bx bx-message-edit font-24 d-sm-none'></i>
+											</a>
+										</li>
+									</ul>
+									<div class="mt-3 tab-content">
+										<div class="tab-pane fade show active" id="Biography">
+											<div class="row">
+												<div class="col-lg-12">
+													<div class="mb-0 border shadow-none card">
+														<div class="card-body">
+															<h5 class="mb-3">Edit Child</h5>
+														</div>
+														<div class="card-body">
+															<div class="col-12">
+																<div class="col-12 alerts-div">
+																	<div class="col-md-1"></div>
+																	<div class="col-md-10">
+																		<div class="removebioMessages"></div>
+																		<div class="ajaxbioloader"></div>
+																	</div>
+																	<div class="col-md-1"></div>
+																</div>
+															</div>
+															<form id="bio-form" action="#">
+																<div class="form-body">
+																	<div class="row">
+																		<div class="col-12 col-lg-12 border-right">
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<label>Full Name</label>
+																					<input id="client-full-name" type="text" value="" class="form-control">
+																				</div>
+																			</div>
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<label>Allergies</label>
+																					<textarea class="form-control" rows="4" cols="50" id="client-allergies"></textarea>
+																				</div>
+																			</div>
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<label>Medical Conditions</label>
+																					<textarea class="form-control" rows="4" cols="50" id="client-medical-conditions"></textarea>
+																				</div>
+																			</div>
+																			<div class="form-row">
+																				<label>Special Needs</label>
+																				<div class="row" id="div-conditionlist"></div>
+																			</div>
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<label>Any other special needs not listed</label>
+																					<textarea class="form-control" rows="4" cols="50" id="client-special-needs"></textarea>
+																				</div>
+																			</div>
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<label>Behavioral conditions</label>
+																					<textarea class="form-control" rows="4" cols="50" id="client-behavioral-conditions"></textarea>
+																				</div>
+																			</div>
+
+																			<div class="form-row">
+																				<div class="form-group col-md-12">
+																					<div class="single-select">
+																						<label>Date Of Birth:</label>
+																						<input class="form-control" max="{{ "now"|date("Y-m-d") }}" type="datetime-local" id="dob">
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="mt-3 btn-group w-100">
+																	<button id="clientbio" type="submit" class="btn btn-light btn-block clientbio-btn">Update Child</button>
+																	<button type="submit" class="btn btn-light clientbio-btn clientbio-btn-ico">
+																		<i class="lni lni-arrow-right"></i>
+																	</button>
+																</div>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="Edit-Profile">
+											<div class="mb-0 border shadow-none card radius-15">
+												<div class="card-body">
+													<div class="col-12">
+														<div class="col-12 alerts-div">
+															<div class="col-md-1"></div>
+															<div class="col-md-10">
+																<div class="removebioMessages"></div>
+																<div class="ajaxbioloader"></div>
+															</div>
+															<div class="col-md-1"></div>
+														</div>
+													</div>
+													<form id="bio-form" action="#">
+														<div class="form-body">
+															<div class="row">
+																<div class="col-12 col-lg-5 border-right">
+																	<div class="form-row">
+																		<div class="form-group col-md-12">
+																			<label>Full Name</label>
+																			<input id="client-full-name" type="text" value="" class="form-control">
+																		</div>
+																	</div>
+																	<div class="form-group">
+																		<label>Phone</label>
+																		<input id="client-phone" type="text" class="form-control">
+																	</div>
+																	<div class="form-group">
+																		<label>Location</label>
+																		<input type="text" id="client-location" class="form-control">
+																	</div>
+																	<div class="form-group">
+																		<label>Nation</label>
+																		<input type="text" id="client-nationality" class="form-control">
+																	</div>
+																	<div class="form-row">
+																		<div class="form-group col-md-12">
+																			<div class="single-select">
+																				<label>Date Of Birth:</label>
+																				<input class="form-control" type="datetime-local" id="dob">
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-12 col-lg-7">
+																	<div class="form-row">
+																		<div class="col-12">
+																			<div class="form-group col-md-12">
+																				<label>Twitter</label>
+																				<input type="text" class="form-control" id="client-twitter" value="">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="form-row">
+																		<div class="col-6">
+																			<div class="form-group col-md-12">
+																				<label>Instagram</label>
+																				<input type="text" class="form-control" id="client-insta">
+																			</div>
+																		</div>
+																		<div class="col-6">
+																			<div class="form-group col-md-12">
+																				<label>Facebook</label>
+																				<input type="text" class="form-control" id="client-fb">
+																			</div>
+																		</div>
+																	</div>
+																	<div class="form-row">
+																		<div class="col-12">
+																			<div class="form-group col-12">
+																				<label>Bio</label>
+																				<textarea class="form-control" rows="8" cols="50" id="client-bio-field"></textarea>
+																			</div>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+														<div class="mt-3 btn-group w-100">
+															<button id="clientbio" type="submit" class="btn btn-light btn-block clientbio-btn">Update Profile</button>
+															<button type="submit" class="btn btn-light clientbio-btn clientbio-btn-ico">
+																<i class="lni lni-arrow-right"></i>
+															</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+
+	<!--modals-->
+	<div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Preview</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-12">
+						<p>
+							<strong>Name</strong>
+						</p>
+						<p id="preview-name"></p>
+						<p>
+							<strong>Age</strong>
+						</p>
+						<p id="age"></p>
+
+						
+						<p>
+							<strong>Created on</strong>
+						</p>
+						<p id="display_date"></p>
+
+						<p>
+							<strong>Allergies</strong>
+						</p>
+						<p id="allergies"></p>
+
+						
+						<p>
+							<strong>Medical Conditions</strong>
+						</p>
+						<p id="medical_conditions"></p>
+						
+						
+						<p>
+							<strong>Special Needs</strong>
+						</p>
+						<p id="special_needs"></p>
+						
+						<p>
+							<strong>Behavioral Conditions</strong>
+						</p>
+						<p id="behavioral_conditions"></p>
+
+						<p>
+							<strong>Special Needs</strong>
+						</p>
+						<div class="col-12" id="special_need_list"></div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					<a id="edit-kid" href="#" id="new-event" class="btn btn-light new-event-btn">Edit</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--modals-->
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+
+	<script src="{{ asset('resources/portal/plugins/notifications/js/lobibox.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/func/kids/kids_edit.js') }}"></script>
+
+
+{% endblock %}

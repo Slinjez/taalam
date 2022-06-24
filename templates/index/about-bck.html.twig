@@ -1,0 +1,232 @@
+{% extends "layouts/baselayout.html.twig" %}
+
+{% block head %}
+
+	{{ parent() }}
+	<style>
+		.services-section-two {
+			position: relative;
+			z-index: 0;
+			padding-top: 80px;
+			padding-bottom: 100px;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body class="hidden-bar-wrapper">
+
+		<div class="page-wrapper">
+
+			<!-- Preloader -->
+			<div class="preloader"></div>
+
+			<!-- Main Header-->
+			{% block topnav %}
+				{% include ('includes/topnav.html.twig') %}
+			{% endblock %}
+			<!-- End Main Header -->
+
+			<!--Page Title-->
+			<section class="page-title" style="background-image:url(/resources/skin/images/resource/sloganbg.jpg)">
+				<div class="auto-container">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h2>About Us</h2>
+							<div class="text">Let Kids Play.</div>
+						</div>
+						<div class="pull-right">
+							<ul class="page-breadcrumb">
+								<li>
+									<a href="/">home</a>
+								</li>
+								<li>About us</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--End Page Title-->
+
+
+			<!-- Benefits Section -->
+			<section class="benefits-section">
+				<div class="side-image hide-me" style="background-image:url(https://via.placeholder.com/300x180)"></div>
+				<div class="auto-container">
+					<div
+						class="row clearfix">
+
+						<!-- Content Column -->
+						<div class="content-column col-lg-6 col-md-12 col-sm-12">
+							<div
+								class="inner-column">
+								<!-- Sec Title -->
+								<div class="sec-title">
+									<div class="title hide-me">OUR BENEFITS</div>
+									<h2>{{page_info.title}}</h2>
+								</div>
+
+								<!-- Benefit Block -->
+								<div class="benefit-block">
+									<div class="block-inner">
+										<span class="icon flaticon-dumbbell"></span>
+										<strong class="hide-me">***</strong>
+										<div class="feature-text">{{page_info.body| raw}}
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- Images Column 
+																								<div class="images-column col-lg-6 col-md-12 col-sm-12" style="background-image:url(/resources/skin/images/resource/pexels-william-fortunato-6393342.jpg)">
+																									<div class="pattern-layer" style="background-image:url(/resources/skin/images/resource/1.png)"></div>
+																									<div class="pattern-layer-two" style="background-image:url(/resources/skin/images/resource/4.png)"></div>
+																									<div class="inner-column">
+																										<div class="image">
+																											<img src="/resources/skin/images/resource/1.png" alt=""/>
+																										</div>
+																										<div class="image-one">
+																											<img src="/resources/skin/images/resource/2.png" alt=""/>
+																										</div>
+																										<div class="image-two">
+																											<img src="/resources/skin/images/resource/3.png" alt=""/>
+																										</div>
+																										<div class="image-three">
+																											<img src="/resources/skin/images/resource/4.png" alt=""/>
+																										</div>
+																									</div>
+																								</div>-->
+						<div class="images-column col-lg-6 col-md-12 col-sm-12" style="background-image:url({{page_info.side_image}});min-height: 220px;"></div>
+
+					</div>
+				</div>
+			</section>
+			<!-- End Benefits Section -->
+
+
+			<!-- Newsletter Section -->
+			<section class="row ">
+				<div class="auto-container">
+					<div class="inner-container">
+						<div class="pattern-layer" style="background-image:url(https://via.placeholder.com/1545x200)"></div>
+						<div class="section-image" style="background-image:url(https://via.placeholder.com/161x165)"></div>
+						<div
+							class="clearfix">
+							<!-- Form Column -->
+							<div class="form-column col-lg-12 col-md-12 col-sm-12">
+								<div class="inner-column">
+									<span class="circle-one"></span>
+									<span class="circle-two"></span>
+
+									<div class="title-column col-lg-12 col-md-12 col-sm-12">
+										<div class="inner-column light">
+											<div
+												class="auto-container">
+												<!-- Sec Title -->
+												<div
+													class="sec-title  centered">
+													<!--<div class="title">Rate Card</div>-->
+													<h2 class="">CORE VALUES</h2>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+
+									<div class="col-lg-12">
+
+										<section class="dl-blurbs">
+											<dl>
+												<dt>Design</dt>
+												<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</dd>
+											</dl>
+											<dl>
+												<dt>Deliver</dt>
+												<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</dd>
+											</dl>
+											<dl>
+												<dt>Design</dt>
+												<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</dd>
+											</dl>
+											<dl>
+												<dt>Deliver</dt>
+												<dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet.</dd>
+											</dl>
+										</section>
+
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Subscribe Section -->
+
+
+			<!-- Services Section Two -->
+			<section class="services-section-two ">
+				<div class="image-layer"></div>
+				<div class="auto-container">
+
+					<div
+						class="row clearfix">
+
+						<!-- Service Block -->
+						<div class="service-block-two col-lg-6 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<div class="icon-box hide-me">
+									<span class="icon flaticon-barbell"></span>
+								</div>
+								<span class="number">01</span>
+								<div class="title">Mission</div>
+								<h4>
+									<a href="#">OUR MISSION</a>
+								</h4>
+								<div class="text">To inspire an active lifestyle and enhance the well-being of children through inclusive sports and
+																																				physical activities.</div>
+							</div>
+						</div>
+
+						<!-- Service Block -->
+						<div class="service-block-two col-lg-6 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<div class="images-column col-lg-6 col-md-12 col-sm-12" style="background-image:url({{page_info.side_image}});min-height: 220px;"></div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+			<!-- End Services Section Two -->
+
+
+			<!-- Main Footer -->
+			{% block footer %}
+				{% include ('includes/mainfooter.html.twig') %}
+			{% endblock %}
+
+		</div>
+		<!--End pagewrapper-->
+
+
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-arrow-up"></span>
+		</div>
+
+	</body>
+{% endblock %}
+
+{% block pageScripts %}
+
+	{# <script src="{{ asset('resources/skin/js/func/current-activities.js') }}"></script> #}
+{% endblock %}

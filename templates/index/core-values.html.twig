@@ -1,0 +1,98 @@
+{% extends "layouts/baselayout.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<!-- Start Page Title Area -->
+	<div class="page-title-area">
+		<div class="container">
+			<div class="page-title-content">
+				<h2>About Us</h2>
+
+				<ul>
+					<li>
+						<a href="/">
+							Home
+						</a>
+					</li>
+
+					<li class="active">
+						Let Kids Play.
+					</li>
+				</ul>
+
+				<img src="{{asset('resources/skin/assets/images/choose-shape.png')}}" alt="Image" class="shape shape-3" data-speed="0.09" data-revert="true">
+			</div>
+		</div>
+
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-1.png')}}" alt="Image" class="shape shape-1" data-speed="0.04" data-revert="true">
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-2.png')}}" alt="Image" class="shape shape-2" data-speed="0.04" data-revert="true">
+	</div>
+	<!-- End Page Title Area -->
+
+	<div class="col-12 row loading-div hide-me">
+		<div class="col-12 alerts-div">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<div class="removeDataMessages"></div>
+				<div class="ajaxDataloader"></div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+	</div>
+
+	<!-- Start Case Studies Details Area -->
+	<div class="case-studies-details-area gallery-popup ptb-100">
+		<div class="container">
+			<div class="case-studies-details-img ">
+				<div class="case-studies-title d-flex justify-content-between align-items-center">
+					<div class="title">
+						<span class="top-title">About Us</span>
+						<h2 class="title">{{page_info.title}}</h2>
+					</div>
+					<p id="teaser">#</p>
+				</div>
+
+				{# <a
+					href="#" class="img">
+					<!--1320x516-->
+					<img id="blog-thumb" class="full-width-img" src="{{page_info.side_image}}" alt="Image">
+				</a> #}
+
+
+			</div>
+
+			<div class="row">
+				<div class="block-inner col-md-6">
+					<span class="icon flaticon-dumbbell"></span>
+					<strong class="hide-me">***</strong>
+					<div class="feature-text">{{page_info.body| raw}}
+					</div>
+				</div>
+				<div class="block-inner col-md-6">
+					<img id="blog-thumb" class="full-width-img" src="{{page_info.side_image}}" alt="Image">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Case Studies Details Area -->
+
+	
+{% endblock %}
+
+{% block pageScripts %}
+
+	{# <script src="{{ asset('resources/skin/assets/vendor/paginga-master/paginga.jquery.min.js') }}"></script>
+			<script src="{{ asset('resources/skin/js/func/current-activities-vw.js') }}"></script> #}
+
+
+	<script src="{{ asset('resources/skin/assets/vendor/paginga-master/paginga.jquery.min.js') }}"></script>
+
+
+	{# <script src="{{ asset('resources/skin/assets/js/custom.js') }}"></script> #}
+{% endblock %}

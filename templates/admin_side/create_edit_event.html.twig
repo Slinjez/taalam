@@ -1,0 +1,466 @@
+{% extends "layouts/portallayoutadmin.html.twig" %}
+
+{% block head %}
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/fontawesome-free-5.15.4-web/css/all.min.css') }}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('resources/portal/plugins/notifications/css/lobibox.min.css') }}"/>
+	<link href="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.css') }}" rel="stylesheet">
+
+
+	{{ parent() }}
+	<link href="{{ asset('resources/portal/plugins/simple-rich-text-editor/style.css') }}" rel="stylesheet"/>
+	<style>
+		.footer {
+			position: fixed;
+		}
+		#div-trainerlist {
+			display: block;
+			width: 100%;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">Book Event</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/admin-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">Book Event</li>
+									</ol>
+								</nav>
+							</div>
+							{# <div class="ml-auto">
+								<div class="btn-group">
+									<button type="button" class="btn btn-light">Settings</button>
+									<button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown">
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
+										<a class="dropdown-item" href="javascript:;">Action</a>
+										<a class="dropdown-item" href="javascript:;">Change Password</a>
+										<a class="dropdown-item" href="javascript:;">Deactivate Account</a>
+									</div>
+								</div>
+							</div> #}
+						</div>
+						<!--end breadcrumb-->
+						<div class="user-profile-page">
+							<div class="card radius-15">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-12 col-lg-7 border-right">
+											<div class="d-md-flex align-items-center">
+												<div class="mb-3 mb-md-0">
+													{# <i class="bx bx-user bx-lg" width="130" height="130"></i> #}
+													<img id="event-thumbnail" src="assets/images/avatars/avatar-1.png" class="shadow rounded-circle" width="130" height="130" alt="" />
+												</div>
+												<div class="ml-md-4 flex-grow-1">
+													<div class="mb-1 d-flex align-items-center">
+														<h4 class="mb-0 " id="event-name"></h4>
+														{# <p class="mb-0 ml-auto">$44/hr</p> #}
+													</div>
+													<p class="mb-0" id="tag_line"> </p>
+													{# <p>
+														<i class='bx bx-buildings'></i>
+														<span class="location-span"></span>
+													</p> #}
+													{# <button type="button" class="btn btn-light">Connect</button>
+																																						<button type="button" class="ml-2 btn btn-light">Resume</button> #}
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-lg-5">
+											<table class="table mt-3 table-sm table-borderless mt-md-0">
+												<tbody>
+													<tr>
+														<th>Location:</th>
+														<td>
+															<span id="location"></span>
+														</td>
+													</tr>
+													<tr>
+														<th>Start Date:</th>
+														<td>
+															<span class="badge badge-light" id="start_date"></span>
+														</td>
+													</tr>
+													<tr>
+														<th>End Date:</th>
+														<td>
+															<span class="badge badge-light" id="end_date"></span>
+														</td>
+													</tr>
+													<tr>
+														<th>Age Bracket:</th>
+														<td>
+															<span id="age-bracket-span"></span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+											<div class="mb-3 mb-lg-0">
+												<a id="link-twitter" href="javascript:;" target="_blank" class="btn btn-sm btn-link">
+													<i class='bx bxl-twitter'></i>
+												</a>
+												<a id="link-fb" href="javascript:;" target="_blank" class="btn btn-sm btn-link">
+													<i class='bx bxl-facebook'></i>
+												</a>
+												<a id="link-insta" href="javascript:;" target="_blank" class="btn btn-sm btn-link">
+													<i class='bx bxl-instagram'></i>
+												</a>
+											</div>
+										</div>
+									</div>
+									<!--end row-->
+									<ul class="nav nav-pills">
+										<li class="nav-item">
+											<a class="nav-link active" id="profile-tab" data-toggle="tab" href="#Biography">
+												<span class="p-tab-name">Book</span>
+												<i class='bx bxs-user-rectangle font-24 d-sm-none'></i>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" data-toggle="tab" href="#Edit-Profile">
+												<span class="p-tab-name">Details</span>
+												<i class='bx bx-message-edit font-24 d-sm-none'></i>
+											</a>
+										</li>
+									</ul>
+									<div class="mt-3 tab-content">
+										<div class="tab-pane fade show active" id="Biography">
+											<div class="row">
+												<div class="col-lg-4">
+													<div class="mb-0 border shadow-none card">
+														<div class="card-body">
+															<h5 class="mb-3">Notes</h5>
+														</div>
+														<ul class="list-group list-group-flush">
+															<li class="list-group-item">
+																<p class="mb-0">
+																	<i class='bx bxs-arrow-to-right'></i>
+																	Max Attendees <span id="max-attendee-span"></span>
+																</p>
+															</li>
+															<li class="list-group-item">
+																<p class="mb-0">
+																	<i class='bx bxs-arrow-to-right'></i>
+																	Max Chaperone <span id="chaperone-allowed-span"></span>
+																</p>
+															</li>
+															<li class="list-group-item">
+																<p class="mb-0">
+																	<i class='bx bxs-arrow-to-right'></i>
+																	Age bracket <span class="age-bracket-span"></span>
+																</p>
+															</li>
+														</ul>
+
+														<div class="col-md-12">
+															<div class="mb-0 border shadow-none card">
+																<div class="card-body">
+																	<h5 class="mb-3">Trainers List</h5>
+
+																	<div class="col-md-12 row">
+																		<div class="row" id="div-trainerlist"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+
+														<div class="col-md-12">
+										<div class="single-select">
+											<label>Update Status</label>
+											<select id="status-select" class="form-control"></select>
+										</div>
+									</div>
+													</div>
+												</div>
+												<div class="col-lg-8">
+													<div class="mb-0 border shadow-none card radius-15">
+														<div class="card-body">
+															<h5 class="mb-3">Editing Form</h5>
+															<p id="profile-bio"></p>
+
+															<div class="col-12">
+																		<div class="col-12 alerts-div">
+																			<div class="col-md-1"></div>
+																			<div class="col-md-10">
+																				<div class="removeBookMessages"></div>
+																				<div class="ajaxBookloader"></div>
+																			</div>
+																			<div class="col-md-1"></div>
+																		</div>
+																	</div>
+															
+															<div class="row">
+																		<div class="col-md-12 ">
+																			<form action="#" id="new-event-form">
+																			<input class="form-control" type="hidden" id="record-id">
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Event Name</label>
+																							<input class="form-control" type="text" id="session-name">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Select Services</label>
+																							<select id="service-select" class="form-control" multiple="multiple"></select>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Event Start Date and time:</label>
+																							<input class="form-control" type="datetime-local" id="session-date">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Event End Date and time:</label>
+																							<input class="form-control" type="datetime-local" id="session-end-date">
+																						</div>
+																					</div>
+
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Location</label>
+																							<input class="form-control" type="text" id="session-location" name="session-location">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Max Attendees<small> (0=Unlimited)</small></label>
+																							<input class="form-control" type="number" id="max-attendees">
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Age Bracket</label>
+																							<select id="age-bracket" class="form-control" multiple="multiple"></select>
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Type of Training</label>
+																							<select id="type-of-training" class="form-control" multiple="multiple"></select>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Total Chaperone Allowed<small>
+																									(0=Unlimited)</small>
+																							</label>
+																							<input class="form-control" type="number" id="num-chaperone-alllowed">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Number of sessions
+																							</label>
+																							<input class="form-control" type="number" id="num_sessions">
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="row">
+																					<div class="col-md-12">
+																						<div class="single-select">
+																							<label>Cost
+																							</label>
+																							<input class="form-control" type="number" id="cost">
+																						</div>
+																					</div>
+																				</div>
+																				
+																				<div class="mt-4 form-group">
+																					<label>Tag Line</label>
+																					<textarea class="form-control" rows="5" cols="50" name="tag-line" id="tag-line"></textarea>
+																				</div>
+																				<div class="mt-4 form-group">
+																					<label>Description of the session</label>
+																					<div class="row align-items-center justify-content-center">
+																						<div class="col-md-12 col-lg-12">
+																							<div class="editor" id="editor-1">
+																								<div class="toolbar">
+																									<a href="#" data-command='undo' data-toggle="tooltip" data-placement="top" title="Undo">
+																										<i class='fa fa-undo'></i>
+																									</a>
+																									<a href="#" data-command='redo' data-toggle="tooltip" data-placement="top" title="Redo">
+																										<i class='fa fa-redo '></i>
+																									</a>
+																									<a href="#" data-command='removeFormat' data-toggle="tooltip" data-placement="top" title="Clear format">
+																										<i class='fa fa-times '></i>
+																									</a>
+																									<a href="#" data-command='bold' data-toggle="tooltip" data-placement="top" title="Bold">
+																										<i class='fa fa-bold'></i>
+																									</a>
+																									<a href="#" data-command='italic' data-toggle="tooltip" data-placement="top" title="Italic">
+																										<i class='fa fa-italic'></i>
+																									</a>
+																									<a href="#" data-command='underline' data-toggle="tooltip" data-placement="top" title="Underline">
+																										<i class='fa fa-underline'></i>
+																									</a>
+																									<a href="#" data-command='strikeThrough' data-toggle="tooltip" data-placement="top" title="Strike through">
+																										<i class='fa fa-strikethrough'></i>
+																									</a>
+																									<a href="#" data-command='justifyLeft' data-toggle="tooltip" data-placement="top" title="Left align">
+																										<i class='fa fa-align-left'></i>
+																									</a>
+																									<a href="#" data-command='justifyCenter'>
+																										<i class='fa fa-align-center' data-toggle="tooltip" data-placement="top" title="Center align"></i>
+																									</a>
+																									<a href="#" data-command='justifyRight' data-toggle="tooltip" data-placement="top" title="Right align">
+																										<i class='fa fa-align-right'></i>
+																									</a>
+																									<a href="#" data-command='justifyFull' data-toggle="tooltip" data-placement="top" title="Justify">
+																										<i class='fa fa-align-justify'></i>
+																									</a>
+																									<a href="#" data-command='indent' data-toggle="tooltip" data-placement="top" title="Indent">
+																										<i class='fa fa-indent'></i>
+																									</a>
+																									<a href="#" data-command='outdent' data-toggle="tooltip" data-placement="top" title="Outdent">
+																										<i class='fa fa-outdent'></i>
+																									</a>
+																									<a href="#" data-command='insertUnorderedList' data-toggle="tooltip" data-placement="top" title="Unordered list">
+																										<i class='fa fa-list-ul'></i>
+																									</a>
+																									<a href="#" data-command='insertOrderedList' data-toggle="tooltip" data-placement="top" title="Ordered list">
+																										<i class='fa fa-list-ol'></i>
+																									</a>
+																									<a href="#" data-command='h1' data-toggle="tooltip" data-placement="top" title="H1">H1</a>
+																									<a href="#" data-command='h2' data-toggle="tooltip" data-placement="top" title="H2">H2</a>
+																									<a href="#" data-command='h3' data-toggle="tooltip" data-placement="top" title="H3">H3</a>
+																									<a href="#" data-command='h4' data-toggle="tooltip" data-placement="top" title="H4">H4</a>
+																									<a href="#" data-command='h5' data-toggle="tooltip" data-placement="top" title="H5">H5</a>
+																									<a href="#" data-command='h6' data-toggle="tooltip" data-placement="top" title="H6">H6</a>
+																									<a href="#" data-command='createlink' data-toggle="tooltip" data-placement="top" title="Insert link">
+																										<i class='fa fa-link'></i>
+																									</a>
+																									<a href="#" data-command='unlink' data-toggle="tooltip" data-placement="top" title="Unlink">
+																										<i class='fa fa-unlink'></i>
+																									</a>
+																									<a href="#" data-command='insertimage' data-toggle="tooltip" data-placement="top" title="Insert image">
+																										<i class='fa fa-image'></i>
+																									</a>
+																									<a href="#" data-command='p' data-toggle="tooltip" data-placement="top" title="Paragraph">P</a>
+																									<a href="#" data-command='subscript' data-toggle="tooltip" data-placement="top" title="Subscript">
+																										<i class='fa fa-subscript'></i>
+																									</a>
+																									<a href="#" data-command='superscript' data-toggle="tooltip" data-placement="top" title="Superscript">
+																										<i class='fa fa-superscript'></i>
+																									</a>
+																								</div>
+																								<div id='editor' class="editorAria" contenteditable>
+																									<h1>
+																										<font>Taalam Care</font>
+																									</h1>
+																									<p>Demo text</p>
+																									<img src="https://images.pexels.com/photos/1061640/pexels-photo-1061640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="mt-4 form-group">
+																					<p><br>Upload event hero image <small>(best fit 770x420)</small></p>
+																					<div action="" class="dropzone col-md-12" id="my-awesome-dropzone" name="my-awesome-dropzone"></div>
+																				</div>
+																				<div class="mt-3 btn-group w-100">
+																					<button id="new-event" type="submit" class="btn btn-light btn-block new-event-btn">Update Event</button>
+																					<button type="submit" class="btn btn-light new-event-btn new-event-btn-ico">
+																						<i class="lni lni-arrow-right"></i>
+																					</button>
+																				</div>
+																			</form>
+																		</div>
+																	</div>
+
+															<hr>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="tab-pane fade" id="Edit-Profile">
+											<div class="mb-0 border shadow-none card radius-15">
+												<div class="card-body">
+													<div class="col-md-12 row">
+														<div class="" id="desc-body">
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/simple-rich-text-editor/script.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/select2/js/select2.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/func/trainers/new-event.js') }}"></script> #}
+	<script src="{{ asset('resources/portal/plugins/notifications/js/lobibox.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notifications.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notification-custom-script.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.js') }}"></script>
+
+	
+	{# <script src="{{ asset('resources/portal/func/events/event-details-new.js') }}"></script> #}
+	<script src="{{ asset('resources/portal/func/events/event-details-newedit.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/adminfunc/events/edit-new-event.js') }}"></script> #}
+{% endblock %}

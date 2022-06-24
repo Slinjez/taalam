@@ -1,0 +1,101 @@
+{% extends "layouts/portallayout.html.twig" %}
+
+{% block head %}
+	{{ parent() }}
+	<style>
+		.footer {
+			position: relative;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">{{page_name}}</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/client-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">{{page_description}}</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+						<!--end breadcrumb-->
+
+						<div class="col-12 row loading-div hide-me">
+										<div class="col-12 alerts-div">
+											<div class="col-md-1"></div>
+											<div class="col-md-10">
+												<div class="removeDataMessages"></div>
+												<div class="ajaxDataloader"></div>
+											</div>
+											<div class="col-md-1"></div>
+										</div>
+						</div>
+
+						<div class="row results-div ">
+							<div class="paginate 1">
+								<div id="results-div" class="items row">
+									
+
+								</div>
+								<div class="pager">
+									<div class="firstPage">&laquo;</div>
+									<div class="previousPage">&lsaquo;</div>
+									<div class="pageNumbers"></div>
+									<div class="nextPage">&rsaquo;</div>
+									<div class="lastPage">&raquo;</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+
+	<script src="{{ asset('resources/portal/func/services/view-services.js') }}"></script>
+
+
+{% endblock %}

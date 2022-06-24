@@ -1,0 +1,232 @@
+{% extends "layouts/portallayoutadmin.html.twig" %}
+
+{% block head %}
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/fontawesome-free-5.15.4-web/css/all.min.css') }}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('resources/portal/plugins/notifications/css/lobibox.min.css') }}"/>
+	<link href="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.css') }}" rel="stylesheet">
+
+
+	<link href="{{ asset('resources/portal/plugins/wysiwyg-editor-bootstrap/dist/css/wysiwyg.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('resources/portal/plugins/wysiwyg-editor-bootstrap/dist/css/highlight.min.css') }}" rel="stylesheet">
+
+	{{ parent() }}
+	<link href="{{ asset('resources/portal/plugins/simple-rich-text-editor/style.css') }}" rel="stylesheet"/>
+	<style>
+		.footer {
+			position: fixed;
+		}
+		#div-trainerlist {
+			display: block;
+			width: 100%;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">{{page_name}}</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/admin-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">{{page_description}}</li>
+									</ol>
+								</nav>
+							</div>
+
+						</div>
+						<!--end breadcrumb-->
+						<div class="card">
+							<div class="card-body">
+								<div class="card-title">
+									<h4 class="mb-0">{{page_description}}</h4>
+
+
+								</div>
+								<hr/>
+
+								<div class="col-12 row loading-div hide-me">
+									<div class="col-12 alerts-div">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<div class="removeDataMessages"></div>
+											<div class="ajaxDataloader"></div>
+										</div>
+										<div class="col-md-1"></div>
+									</div>
+								</div>
+
+								<div class="user-profile-page results-div">
+									<div class="card radius-15 ">
+                                        <div class="row">
+										<div class="col-md-4">
+											<div class="mb-0 border shadow-none card">
+												<div class="card-body">
+													<h5 class="mb-3">Notes</h5>
+												</div>
+												<ul class="list-group list-group-flush">
+													<li class="list-group-item">
+														<p class="mb-0">
+															<i class='bx bxs-arrow-to-right'></i>
+															Status:
+															<span id="status-disp"></span>
+														</p>
+													</li>
+												</ul>
+
+												<div class="col-md-12">
+													<div class="single-select">
+														<label>Update Status</label>
+														<select id="status-select" class="form-control">
+															<option value="0">Icebox</option>
+															<option value="1">Ongoing</option>
+															<option value="2">Closed</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+
+
+                                                <div class="mt-3 tab-content">
+                                                    <div class="tab-pane fade show active" id="Biography">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="mb-0 border shadow-none card radius-15">
+                                                                    <div class="card-body">
+                                                                        <h5 class="mb-3">Create Event</h5>
+                                                                        <p>Kindly fill this form to set the event.</p>
+                                                                        <hr>
+                                                                        <h5 class="mb-3">Create new event</h5>
+
+                                                                        <div class="col-12">
+                                                                            <div class="col-12 alerts-div">
+                                                                                <div class="col-md-1"></div>
+                                                                                <div class="col-md-10">
+                                                                                <span id="notif-span"></span>
+                                                                                    <div class="removeBookMessages"></div>
+                                                                                    <div class="ajaxBookloader"></div>
+                                                                                </div>
+                                                                                <div class="col-md-1"></div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12 ">
+                                                                                <form action="#" id="new-event-form">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="single-select">
+                                                                                                <label>Blog Title</label>
+                                                                                                <input class="form-control" type="text" name="blog-title" id="blog-title">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="mt-4 form-group">
+                                                                                        <label>Teaser</label>
+                                                                                        <textarea class="form-control" rows="5" cols="50" name="teaser" id="teaser"></textarea>
+                                                                                    </div>
+                                                                                    <div class="mt-4 form-group">
+                                                                                        <label>Description of the session</label>
+
+                                                                                        <textarea id="editor" class="form-control wysiwyg-editor hide-me">
+                                                                                            content here
+                                                                                        </textarea>
+                                                                                    </div>
+                                                                                    <div class="mt-4 form-group">
+                                                                                        <p><br>Upload blog hero image
+                                                                                            <small>(best fit 770x420)</small>
+                                                                                        </p>
+                                                                                        <div action="" class="dropzone col-md-12" id="my-awesome-dropzone" name="my-awesome-dropzone"></div>
+                                                                                    </div>
+                                                                                    <div class="mt-3 btn-group w-100">
+                                                                                        <button id="new-event" type="submit" class="btn btn-light btn-block new-event-btn">Update Blog</button>
+                                                                                        <button type="submit" class="btn btn-light new-event-btn new-event-btn-ico">
+                                                                                            <i class="lni lni-arrow-right"></i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                        <hr>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/plugins/simple-rich-text-editor/script.js') }}"></script> #}
+
+
+	<script src="{{ asset('resources/portal/plugins/select2/js/select2.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/wysiwyg-editor-bootstrap/dist/js/wysiwyg.min.js') }}"></script>
+
+	<script src="{{ asset('resources/portal/plugins/select2/js/select2.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/func/trainers/new-event.js') }}"></script> #}
+	<script src="{{ asset('resources/portal/plugins/notifications/js/lobibox.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notifications.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notification-custom-script.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.js') }}"></script>
+
+
+	<script src="{{ asset('resources/portal/adminfunc/blog/edit-blog.js') }}"></script>
+{% endblock %}

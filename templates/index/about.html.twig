@@ -1,0 +1,433 @@
+{% extends "layouts/baselayout.html.twig" %}
+
+{% block head %}
+
+	{{ parent() }}
+	<style>
+		.services-section-two {
+			position: relative;
+			z-index: 0;
+			padding-top: 10px;
+			padding-bottom: 227px;
+		}
+		.h2-light {
+			position: relative;
+			color: #fff;
+			font-weight: 700;
+			line-height: 1.2em;
+			margin-top: 15px;
+			text-transform: capitalize;
+			text-align: center;
+		}
+		b {
+			color: #ded500;
+		}
+		.testimonial-block-three .inner-box {
+			position: relative;
+			padding: 50px 35px 0;
+			text-align: center;
+			border-radius: 8px;
+			background: #e9ecef;
+		}
+		.white-text{
+			color:white;
+		}
+		.services-section-two .image-layer {
+			    height: 720px;
+			/* clip-path: polygon(0 14%, 100% 0, 100% 68%, 0 67%); */
+			clip-path:polygon(0% 14%, 100% 9%, 100% 80%, 0% 90%);
+			padding-bottom: 227px;
+		}
+		.about-section {
+			margin-bottom: 50px;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body class="hidden-bar-wrapper">
+
+		<div
+			class="page-wrapper">
+
+			<!-- Preloader -->
+			<div class="preloader"></div>
+
+			<!-- Main Header-->
+			{% block topnav %}
+				{% include ('includes/topnav.html.twig') %}
+			{% endblock %}
+			<!-- End Main Header -->
+
+			<!--Page Title-->
+			<section class="page-title" style="background-image:url(/resources/skin/images/resource/sloganbg.jpg)">
+				<div class="auto-container">
+					<div class="clearfix">
+						<div class="pull-left">
+							<h2>About Us</h2>
+							<div class="text">Let Kids Play.</div>
+						</div>
+						<div class="pull-right">
+							<ul class="page-breadcrumb">
+								<li>
+									<a href="/">home</a>
+								</li>
+								<li>About us</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--End Page Title-->
+
+
+			<!-- Benefits Section -->
+			<section class="benefits-section hide-me">
+				<div class="side-image hide-me" style="background-image:url(https://via.placeholder.com/300x180)"></div>
+				<div class="auto-container">
+					<div
+						class="row clearfix">
+
+						<!-- Content Column -->
+						<div class="content-column col-lg-6 col-md-12 col-sm-12">
+							<div
+								class="inner-column">
+								<!-- Sec Title -->
+								<div class="sec-title">
+									<div class="title hide-me">OUR BENEFITS</div>
+									<h2>{{page_info.title}}</h2>
+								</div>
+
+								<!-- Benefit Block -->
+								<div class="benefit-block">
+									<div class="block-inner">
+										<span class="icon flaticon-dumbbell"></span>
+										<strong class="hide-me">***</strong>
+										<div class="feature-text">{{page_info.body| raw}}
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="images-column col-lg-6 col-md-12 col-sm-12" style="background-image:url({{page_info.side_image}});min-height: 350px;min-width: 580px;"></div>
+
+					</div>
+				</div>
+			</section>
+			<!-- End Benefits Section -->
+
+
+			<section class="about-section ">
+				<div class="auto-container">
+					<div
+						class="row clearfix">
+
+						<!-- Content Column -->
+						<div class="content-column col-lg-6 col-md-12 col-sm-12">
+							<div
+								class="inner-column">
+								<!-- Sec Title -->
+								<div class="sec-title">
+									<h2>{{page_info.title}}</h2>
+								</div>
+								<div class="text">{{page_info.body| raw}}</div>
+
+
+							</div>
+						</div>
+
+						<!-- Image Column -->
+						<div class="image-column col-lg-6 col-md-12 col-sm-12">
+							<div class="inner-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
+								<div class="award"><img src="images/resource/award.png" alt=""/></div>
+								<div class="image abt-img-1">
+									<img src="{{page_info.side_image}}" alt=""/>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</section>
+
+			<section class="services-section-two">
+				<div class="image-layer" style=""></div>
+				<div class="auto-container">
+
+					<div class="row clearfix">
+
+						<div class="col-md-12 row">
+
+							<div class="service-block-two col-lg-5 col-md-5 col-sm-12">
+								<div class="images-column col-lg-12 col-md-12 col-sm-12"></div>
+
+								<div class="inner-box">
+									<div class="images-column col-lg-12 col-md-12 col-sm-12" style="background-image:url({{page_info.side_image}});min-height: 220px;"></div>
+								</div>
+							</div>
+
+							<div class="text col-md-7 col-sm-12 white-text">{{page_mission.body| raw}}</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<section class="about-section hide-me" style="background-color: #030568;">
+				<div class="image-layer"></div>
+				<div class="auto-container">
+
+					<div class="row clearfix about-section-bt">
+
+						<div class="service-block-two col-lg-2 col-md-12 col-sm-12 "></div>
+						<!-- Service Block -->
+						<div class="service-block-two col-lg-12 col-md-12 col-sm-12">
+							<div
+								class="inner-box">
+								{# <div class="icon-box">
+																																									<span class="icon flaticon-barbell"></span>
+																																								</div> #}
+
+								<h2 class="h2-light">Mission</h2>
+
+								<div class="col-md-12 row">
+
+									<div class="service-block-two col-lg-5 col-md-5 col-sm-12">
+										<div class="images-column col-lg-12 col-md-12 col-sm-12"></div>
+
+										<div class="inner-box">
+											<div class="images-column col-lg-12 col-md-12 col-sm-12" style="background-image:url({{page_info.side_image}});min-height: 220px;"></div>
+										</div>
+									</div>
+
+									<div class="text col-md-7 col-sm-12">To inspire an active lifestyle and enhance the well-being of children through inclusive sports and physical activities.</div>
+
+								</div>
+							</div>
+						</div>
+
+
+						<div class="service-block-two col-lg-2 col-md-12 col-sm-12 "></div>
+
+						<!-- Service Block -->
+						<div class="service-block-two col-lg-4 col-md-6 col-sm-12 hide-me">
+							<div class="inner-box">
+								<div class="icon-box">
+									<span class="icon flaticon-barbell"></span>
+								</div>
+								<span class="number">03</span>
+								<div class="title">Friendly Atmosphere</div>
+								<h4>
+									<a href="classes-detail.html">POWER YOGA</a>
+								</h4>
+								<div class="text">Make the muscles of your body larger and fit stronger through tension and exercises such as lifting weights.</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+
+			<!-- Services Section Two -->
+			<section class="services-section-two hide-me">
+				<div class="image-layer"></div>
+				<div class="auto-container">
+
+					<div
+						class="row clearfix">
+
+						<!-- Service Block -->
+						<div class="service-block-two col-lg-6 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<div class="icon-box hide-me">
+									<span class="icon flaticon-barbell"></span>
+								</div>
+								<span class="number">01</span>
+								<div class="title">Mission</div>
+								<h4>
+									<a href="#">OUR MISSION</a>
+								</h4>
+								<div class="text">To inspire an active lifestyle and enhance the well-being of children through inclusive sports and
+																																																																																										physical activities.</div>
+							</div>
+						</div>
+
+						<!-- Service Block -->
+						<div class="service-block-two col-lg-6 col-md-6 col-sm-12">
+							<div class="inner-box">
+								<div class="images-column col-lg-6 col-md-12 col-sm-12" style="background-image:url({{page_info.side_image}});min-height: 220px;"></div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+			<!-- End Services Section Two -->
+
+			<!-- Newsletter Section -->
+			<section class="row hide-me" style="background-image:url({{asset('resources/skin/images/\serviceblock/18.jpg')}})">
+				<div class="auto-container">
+					<div class="inner-container">
+						<div class="pattern-layer" style="background-image:url(https://via.placeholder.com/1545x200)"></div>
+						<div class="section-image" style="background-image:url(https://via.placeholder.com/161x165)"></div>
+						<div
+							class="clearfix">
+							<!-- Form Column -->
+							<div class="form-column col-lg-12 col-md-12 col-sm-12">
+								<div class="inner-column">
+									<span class="circle-one"></span>
+									<span class="circle-two"></span>
+
+									<div class="title-column col-lg-12 col-md-12 col-sm-12">
+										<div class="inner-column light">
+											<div
+												class="auto-container">
+												<!-- Sec Title -->
+												<div
+													class="sec-title  centered">
+													<!--<div class="title">Rate Card</div>-->
+													<h2 class="light">Core Values</h2>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+
+									<div class="col-lg-12">
+
+										<section
+											class="dl-blurbs">
+											{# {% for page_value in page_values %}
+																																		<dl>
+																																			<dt>{{ page_value.question }}</dt>
+																																			<dd>{{ page_value.answer }}</dd>
+																																		</dl>
+																																	{% endfor %} #}
+											<div class="row clearfix">
+												{% for page_value in page_values %}
+													{% set counter = ( counter | default(0) ) + 1 %}
+													{# <div class="testimonial-block-three col-lg-4 col-md-6 col-sm-12">
+														<div class="inner-box">
+															<div class="text">{{ page_value.answer }}</div>
+
+															<h4>{{ page_value.question }}</h4>
+
+															<div class="author-image">
+																<div class="image why-us-bg why-us-bg1-{{counter}}"></div>
+
+															</div>
+														</div>
+													</div> #}
+
+													<div class="featured-block">
+															<div class="block-inner">
+																<span class="icon flaticon-people"></span>
+																<strong>{{ page_value.answer }}</strong>
+																<div class="feature-text">{{ page_value.question }}</div>
+															</div>
+														</div>
+
+												{% endfor %}
+
+											</section>
+
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</section>
+			<!-- End Subscribe Section -->
+
+			<section class="choose-section">
+					<div class="auto-container">
+					<div class="sec-title">
+									<div class="title hide-me">Core Values</div>
+									<h2 class="">Core Values</h2>
+								</div>
+						<div class="row clearfix">
+							
+							<!-- Images Column -->
+							<div class="images-column col-lg-6 col-md-12 col-sm-12">
+								<div class="inner-column">	
+									<div class="image-1">
+										<img src="{{asset('resources/skin/images/resource/2.jpg')}}" alt="">
+									</div>
+								</div>
+							</div>
+							
+							<!-- Content Column -->
+							<div class="content-column col-lg-6 col-md-12 col-sm-12">
+								<div class="inner-column">
+									<!-- Sec Title -->
+									
+									
+									<!-- Featured Block -->
+									
+									
+									{% for page_value in page_values %}
+													{% set counter = ( counter | default(0) ) + 1 %}
+													{# <div class="testimonial-block-three col-lg-4 col-md-6 col-sm-12">
+														<div class="inner-box">
+															<div class="text">{{ page_value.answer }}</div>
+
+															<h4>{{ page_value.question }}</h4>
+
+															<div class="author-image">
+																<div class="image why-us-bg why-us-bg1-{{counter}}"></div>
+
+															</div>
+														</div>
+													</div> #}
+
+													<div class="featured-block">
+															<div class="block-inner">
+																<span class="icon flaticon-people  hide-me"></span>
+																<strong>{{ page_value.question }}</strong>
+																<div class="feature-text">{{ page_value.answer }}</div>
+															</div>
+														</div>
+
+												{% endfor %}
+									
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</section>
+
+
+			<!-- Main Footer -->
+			{% block footer %}
+				{% include ('includes/mainfooter.html.twig') %}
+			{% endblock %}
+
+		</div>
+		<!--End pagewrapper-->
+
+
+		<!--Scroll to top-->
+		<div class="scroll-to-top scroll-to-target" data-target="html">
+			<span class="fa fa-arrow-up"></span>
+		</div>
+
+	</body>
+{% endblock %}
+
+{% block pageScripts %}
+
+	{# <script src="{{ asset('resources/skin/js/func/current-activities.js') }}"></script> #}
+{% endblock %}

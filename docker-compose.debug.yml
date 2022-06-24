@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  taalamrevamp:
+    image: taalamrevamp
+    build:
+      context: .
+      dockerfile: ./Dockerfile

@@ -1,0 +1,458 @@
+{% extends "layouts/portallayoutadmin.html.twig" %}
+
+{% block head %}
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2.min.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet"/>
+	<link href="{{ asset('resources/portal/plugins/fontawesome-free-5.15.4-web/css/all.min.css') }}" rel="stylesheet"/>
+	<link rel="stylesheet" href="{{ asset('resources/portal/plugins/notifications/css/lobibox.min.css') }}"/>
+	<link href="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.css') }}" rel="stylesheet">
+
+
+	{{ parent() }}
+	<link href="{{ asset('resources/portal/plugins/simple-rich-text-editor/style.css') }}" rel="stylesheet"/>
+	<style>
+		.footer {
+			position: fixed;
+		}
+		#div-trainerlist {
+			display: block;
+			width: 100%;
+		}
+	</style>
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<body
+		class="bg-theme bg-theme1">
+		<!-- wrapper -->
+		<div
+			class="wrapper">
+			<!--sidebar-wrapper-->
+			{% block sidenav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end sidebar-wrapper-->
+			<!--header-->
+			{% block topnav %}
+				{{ parent() }}
+			{% endblock %}
+			<!--end header-->
+			<!--page-wrapper-->
+			<!--page-wrapper-->
+				<div
+				class="page-wrapper"> <!--page-content-wrapper-->
+				<div class="page-content-wrapper">
+					<div
+						class="page-content">
+						<!--breadcrumb-->
+						<div class="mb-3 page-breadcrumb d-none d-md-flex align-items-center">
+							<div class="pr-3 breadcrumb-title">{{page_name}}</div>
+							<div class="pl-3">
+								<nav aria-label="breadcrumb">
+									<ol class="p-0 mb-0 breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="/admin-dash">
+												<i class='bx bx-home-alt'></i>
+											</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">{{page_description}}</li>
+									</ol>
+								</nav>
+							</div>
+
+						</div>
+						<!--end breadcrumb-->
+						<div class="card">
+							<div class="card-body">
+								<div class="card-title">
+									<h4 class="mb-0">{{page_description}}</h4>
+
+
+								</div>
+								<hr/>
+
+								<div class="col-12 row loading-div hide-me">
+									<div class="col-12 alerts-div">
+										<div class="col-md-1"></div>
+										<div class="col-md-10">
+											<div class="removeDataMessages"></div>
+											<div class="ajaxDataloader"></div>
+										</div>
+										<div class="col-md-1"></div>
+									</div>
+								</div>
+
+								<div class="user-profile-page results-div">
+									<div class="card radius-15">
+										<div class="card-body">
+
+
+											<div class="mt-3 tab-content">
+												<div class="tab-pane fade show active" id="Biography">
+													<div class="row">
+														<div class="col-lg-8">
+															<div class="mb-0 border shadow-none card radius-15">
+																<div class="card-body">
+																	<h5 class="mb-3">Create Event</h5>
+																	<p>Kindly fill this form to set the event.</p>
+																	<hr>
+																	<h5 class="mb-3">Create new event</h5>
+
+																	<div class="col-12">
+																		<div class="col-12 alerts-div">
+																			<div class="col-md-1"></div>
+																			<div class="col-md-10">
+																				<div class="removeBookMessages"></div>
+																				<div class="ajaxBookloader"></div>
+																			</div>
+																			<div class="col-md-1"></div>
+																		</div>
+																	</div>
+
+																	<div class="row">
+																		<div class="col-md-12 ">
+																			<form action="#" id="new-event-form">
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Event Name</label>
+																							<input class="form-control" type="text" id="session-name">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Select Services</label>
+																							<select id="service-select" class="form-control" multiple="multiple"></select>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Event Start Date and time:</label>
+																							<input class="form-control" type="datetime-local" id="session-date">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Event End Date and time:</label>
+																							<input class="form-control" type="datetime-local" id="session-end-date">
+																						</div>
+																					</div>
+
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Location</label>
+																							<input class="form-control" type="text" id="session-location" name="session-location">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Max Attendees<small>
+																									(0=Unlimited)</small>
+																							</label>
+																							<input class="form-control" type="number" id="max-attendees">
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Age Bracket</label>
+																							<select id="age-bracket" class="form-control" multiple="multiple"></select>
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Type of Training</label>
+																							<select id="type-of-training" class="form-control" multiple="multiple"></select>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row">
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Total Chaperone Allowed<small>
+																									(0=Unlimited)</small>
+																							</label>
+																							<input class="form-control" type="number" id="num-chaperone-alllowed">
+																						</div>
+																					</div>
+																					<div class="col-md-6">
+																						<div class="single-select">
+																							<label>Number of sessions
+																							</label>
+																							<input class="form-control" type="number" id="num_sessions">
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="row">
+																					<div class="col-md-12">
+																						<div class="single-select">
+																							<label>Cost
+																							</label>
+																							<input class="form-control" type="number" id="cost">
+																						</div>
+																					</div>
+																				</div>
+
+																				<div class="mt-4 form-group">
+																					<label>Tag Line</label>
+																					<textarea class="form-control" rows="5" cols="50" name="tag-line" id="tag-line"></textarea>
+																				</div>
+																				<div class="mt-4 form-group">
+																					<label>Description of the event</label>
+																					<div class="row align-items-center justify-content-center">
+																						<div class="col-md-12 col-lg-12">
+																							<div class="editor" id="editor-1">
+																								<div class="toolbar">
+																									<a href="#" data-command='undo' data-toggle="tooltip" data-placement="top" title="Undo">
+																										<i class='fa fa-undo'></i>
+																									</a>
+																									<a href="#" data-command='redo' data-toggle="tooltip" data-placement="top" title="Redo">
+																										<i class='fa fa-redo '></i>
+																									</a>
+																									<a href="#" data-command='removeFormat' data-toggle="tooltip" data-placement="top" title="Clear format">
+																										<i class='fa fa-times '></i>
+																									</a>
+																									<a href="#" data-command='bold' data-toggle="tooltip" data-placement="top" title="Bold">
+																										<i class='fa fa-bold'></i>
+																									</a>
+																									<a href="#" data-command='italic' data-toggle="tooltip" data-placement="top" title="Italic">
+																										<i class='fa fa-italic'></i>
+																									</a>
+																									<a href="#" data-command='underline' data-toggle="tooltip" data-placement="top" title="Underline">
+																										<i class='fa fa-underline'></i>
+																									</a>
+																									<a href="#" data-command='strikeThrough' data-toggle="tooltip" data-placement="top" title="Strike through">
+																										<i class='fa fa-strikethrough'></i>
+																									</a>
+																									<a href="#" data-command='justifyLeft' data-toggle="tooltip" data-placement="top" title="Left align">
+																										<i class='fa fa-align-left'></i>
+																									</a>
+																									<a href="#" data-command='justifyCenter'>
+																										<i class='fa fa-align-center' data-toggle="tooltip" data-placement="top" title="Center align"></i>
+																									</a>
+																									<a href="#" data-command='justifyRight' data-toggle="tooltip" data-placement="top" title="Right align">
+																										<i class='fa fa-align-right'></i>
+																									</a>
+																									<a href="#" data-command='justifyFull' data-toggle="tooltip" data-placement="top" title="Justify">
+																										<i class='fa fa-align-justify'></i>
+																									</a>
+																									<a href="#" data-command='indent' data-toggle="tooltip" data-placement="top" title="Indent">
+																										<i class='fa fa-indent'></i>
+																									</a>
+																									<a href="#" data-command='outdent' data-toggle="tooltip" data-placement="top" title="Outdent">
+																										<i class='fa fa-outdent'></i>
+																									</a>
+																									<a href="#" data-command='insertUnorderedList' data-toggle="tooltip" data-placement="top" title="Unordered list">
+																										<i class='fa fa-list-ul'></i>
+																									</a>
+																									<a href="#" data-command='insertOrderedList' data-toggle="tooltip" data-placement="top" title="Ordered list">
+																										<i class='fa fa-list-ol'></i>
+																									</a>
+																									<a href="#" data-command='h1' data-toggle="tooltip" data-placement="top" title="H1">H1</a>
+																									<a href="#" data-command='h2' data-toggle="tooltip" data-placement="top" title="H2">H2</a>
+																									<a href="#" data-command='h3' data-toggle="tooltip" data-placement="top" title="H3">H3</a>
+																									<a href="#" data-command='h4' data-toggle="tooltip" data-placement="top" title="H4">H4</a>
+																									<a href="#" data-command='h5' data-toggle="tooltip" data-placement="top" title="H5">H5</a>
+																									<a href="#" data-command='h6' data-toggle="tooltip" data-placement="top" title="H6">H6</a>
+																									<a href="#" data-command='createlink' data-toggle="tooltip" data-placement="top" title="Insert link">
+																										<i class='fa fa-link'></i>
+																									</a>
+																									<a href="#" data-command='unlink' data-toggle="tooltip" data-placement="top" title="Unlink">
+																										<i class='fa fa-unlink'></i>
+																									</a>
+																									<a href="#" data-command='insertimage' data-toggle="tooltip" data-placement="top" title="Insert image">
+																										<i class='fa fa-image'></i>
+																									</a>
+																									<a href="#" data-command='p' data-toggle="tooltip" data-placement="top" title="Paragraph">P</a>
+																									<a href="#" data-command='subscript' data-toggle="tooltip" data-placement="top" title="Subscript">
+																										<i class='fa fa-subscript'></i>
+																									</a>
+																									<a href="#" data-command='superscript' data-toggle="tooltip" data-placement="top" title="Superscript">
+																										<i class='fa fa-superscript'></i>
+																									</a>
+																								</div>
+																								<div id='editor' class="editorAria" contenteditable>
+																									<h1>
+																										<font>Taalam Care</font>
+																									</h1>
+																									<p>Demo text</p>
+																									<img src="https://images.pexels.com/photos/1061640/pexels-photo-1061640.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="mt-4 form-group">
+																					<p><br>Upload event hero image
+																						<small>(best fit 770x420---For requirement pdf save as requirements.pdf)</small>
+																					</p>
+																					<div action="" class="dropzone col-md-12" id="my-awesome-dropzone" name="my-awesome-dropzone"></div>
+																				</div>
+																				<div class="mt-4 form-group hide-me">
+																					<p><br>Upload event PDF
+																						<small>(Optional)</small>
+																					</p>
+																					<div action="" class="dropzone col-md-12" id="my-awesome-dropzone-pdf" name="my-awesome-dropzone-pdf"></div>
+																				</div>
+
+																				<div class="mt-3 btn-group w-100">
+																					<button id="new-event-popup" type="button" class="btn btn-light btn-block new-event-btn">Create Event</button>
+																					<button type="button" class="btn btn-light new-event-btn new-event-btn-ico">
+																						<i class="lni lni-arrow-right"></i>
+																					</button>
+																				</div>
+																			</form>
+																		</div>
+																	</div>
+																	<hr>
+																</div>
+															</div>
+														</div>
+														<div class="col-lg-4">
+															<div class="mb-0 border shadow-none card">
+																<div class="card-body">
+																	<h5 class="mb-3">Select Trainers</h5>
+
+																	<div class="col-md-12 row">
+																		<div class="row" id="div-trainerlist"></div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end page-content-wrapper-->
+			</div>
+			<!--end page-wrapper-->
+		</div>
+	</body>
+	<!--header-->
+<!--modals-->
+	<div class="modal fade" id="preview" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Preview</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="col-12">
+						<p>
+							<strong>Event Title</strong>
+						</p>
+						<p id="preview-session_name"></p>
+						<p>
+							<strong>Event Services</strong>
+						</p>
+						<p id="preview-service_select"></p>
+
+						
+						<p>
+							<strong>Event Start Date</strong>
+						</p>
+						<p id="preview-session_date"></p>
+						<p>
+							<strong>Event End Date</strong>
+						</p>
+						<p id="preview-session_end_date"></p>
+
+						
+						<p>
+							<strong>Location</strong>
+						</p>
+						<p id="preview-session_location"></p>
+
+						
+						<p>
+							<strong>Max Attendees</strong>
+						</p>
+						<p id="preview-max_attendees"></p>
+
+						
+
+						
+						
+						<p>
+							<strong>Total Chaperone Allowed</strong>
+						</p>
+						<p id="preview-num_chaperone_alllowed"></p>
+
+						
+						<p>
+							<strong>Number of sessions</strong>
+						</p>
+						<p id="preview-num_sessions"></p>
+
+						
+						<p>
+							<strong>Cost</strong>
+						</p>
+						<p id="preview-cost"></p>
+
+						
+						<p>
+							<strong>Tag Line</strong>
+						</p>
+						<p id="preview-tag_line"></p>
+
+						
+						<p>
+							<strong>Description</strong>
+						</p>
+						<p id="preview-editor"></p>
+
+
+					</div>
+					<div class="col-12">
+						<div class="mt-4 form-group">
+							<input type="checkbox" id="publish" name="publish">
+							<label for="publish">Publish</label>
+						</div>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light" data-dismiss="modal">Edit</button>
+					<button type="button" id="new-event" class="btn btn-light new-event-btn">Create Event</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--modals-->
+
+
+	<!--end header-->
+{% endblock %}
+{% block pageScripts %}
+	<!--Data Tables js-->
+	<script src="{{ asset('resources/portal/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/simple-rich-text-editor/script.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/select2/js/select2.min.js') }}"></script>
+	{# <script src="{{ asset('resources/portal/func/trainers/new-event.js') }}"></script> #}
+	<script src="{{ asset('resources/portal/plugins/notifications/js/lobibox.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notifications.min.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/notifications/js/notification-custom-script.js') }}"></script>
+	<script src="{{ asset('resources/portal/plugins/dropzone/min/dropzone.min.js') }}"></script>
+
+
+	<script src="{{ asset('resources/portal/adminfunc/events/create-new-event.js') }}"></script>
+{% endblock %}

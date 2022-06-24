@@ -1,0 +1,96 @@
+{% extends "layouts/baselayout.html.twig" %}
+
+{% block head %}
+
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('resources/skin/assets/vendor/accordion/dist/css/a11yAccordion.min.css') }}"/>
+
+{% endblock %}
+
+
+{% block mainContent %}
+
+	<!-- Start Page Title Area -->
+	<div class="page-title-area">
+		<div class="container">
+			<div class="page-title-content">
+				<h2>Join Our Team</h2>
+
+				<ul>
+					<li>
+						<a href="/">
+							Home
+						</a>
+					</li>
+
+					<li class="active">
+						Let Kids Play.
+					</li>
+				</ul>
+
+				<img src="{{asset('resources/skin/assets/images/choose-shape.png')}}" alt="Image" class="shape shape-3" data-speed="0.09" data-revert="true">
+			</div>
+		</div>
+
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-1.png')}}" alt="Image" class="shape shape-1" data-speed="0.04" data-revert="true">
+		<img src="{{asset('resources/skin/assets/images/subscribe-shape-2.png')}}" alt="Image" class="shape shape-2" data-speed="0.04" data-revert="true">
+	</div>
+	<!-- End Page Title Area -->
+
+	<!-- Start Our Review Area -->
+	<div class="our-review-area pt-100 pb-70">
+		<div class="container">
+			<div class="section-title">
+				<span class="top-title">Opportunities</span>
+				<h2>Job Opportunities</h2>
+			</div>
+
+			<div class="col-12 row loading-div hide-me">
+				<div class="col-12 alerts-div">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
+						<div class="removeDataMessages"></div>
+						<div class="ajaxDataloader"></div>
+					</div>
+					<div class="col-md-1"></div>
+				</div>
+			</div>
+
+
+			<div class="col-12">
+				<div class="paginate 1">
+					<div id="results-div" class="items row"></div>
+					
+					
+					<div class="pagination-area pager">
+						<a href="#" class="next page-numbers firstPage buttonify">
+							<i class="ri-arrow-left-s-line"></i>
+						</a>						
+						<div class="pageNumbers"></div>
+
+						<a href="#" class="next page-numbers nextPage buttonify">
+							<i class="ri-arrow-right-s-line"></i>
+						</a>
+					</div>
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</div>
+	<!-- End Our Review Area -->
+
+{% endblock %}
+
+{% block pageScripts %}
+
+	{# <script src="{{ asset('resources/skin/js/func/current-activities.js') }}"></script> #}
+
+	{#<script src="{{ asset('resources/skin/assets/vendor/paginga-master/paginga.jquery.min.js') }}"></script>#}
+	
+	
+	<script src="{{ asset('resources/skin/assets/js/func/opportunities/opportunity.js') }}"></script>
+{% endblock %}
